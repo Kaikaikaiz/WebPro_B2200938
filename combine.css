@@ -1,0 +1,100 @@
+.logo img {
+    width: 200px;
+    height: auto;
+    margin-bottom: -20px;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "DraftWerk W00 Bold";
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+nav {
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 6px 4px rgba(111, 106, 116, 0.548);
+}
+
+.nav-section-a, .nav-section-b {
+    display: flex; 
+    justify-content: center; 
+    margin: 20px 0; 
+}
+
+.nav-section-a a {
+    margin: 0 75px;
+    text-decoration: none;
+    color: rgba(13, 12, 12, 0.705);
+}
+
+.nav-section-b .dropdown {
+    margin: 0 15px; /* Adjust this value for more or less spacing */
+}
+
+.nav-section-a a:hover, .nav-section-b .dropdown-word:hover {
+    text-decoration: underline;
+}
+
+/* Style the dropdown container */
+.dropdown {
+    list-style-type: none;
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the dropdown word */
+.dropdown-word {
+    color: #ffffff;
+    padding: 16px;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff9fd9a;
+    box-shadow: 0px 4px 16px 0px rgb(44, 33, 15);
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content li a {
+    color: #5B5F97;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content li a:hover {
+    background-color: #b8b8d188;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the color of the dropdown word on hover */
+.dropdown:hover .dropdown-word {
+    color: #948467;
+}
