@@ -134,11 +134,11 @@ header {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
- /* footer css */
+
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #5B5F97; /* Light Red */
+    background-color: #FF6B6C; /* Light Red */
     color: white;
     position: relative;
     width: 100%;
