@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Star Rating Survey | Sunny Smile Hospital</title>
+    <link rel="stylesheet" href="survey.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="post">
+        <div class="text">Thanks for rating us!</div>
+        <div class="edit">EDIT</div>
+      </div>
+      <div class="star-widget">
+        <form action="#">
+          <div class="question">
+            <header>1. Friendliness of medical staffs</header>
+            <div class="rating">
+              <input type="radio" name="rate1" id="rate1-5">
+              <label for="rate1-5" class="fas fa-star"></label>
+              <input type="radio" name="rate1" id="rate1-4">
+              <label for="rate1-4" class="fas fa-star"></label>
+              <input type="radio" name="rate1" id="rate1-3">
+              <label for="rate1-3" class="fas fa-star"></label>
+              <input type="radio" name="rate1" id="rate1-2">
+              <label for="rate1-2" class="fas fa-star"></label>
+              <input type="radio" name="rate1" id="rate1-1">
+              <label for="rate1-1" class="fas fa-star"></label>
+            </div>
+          </div>
+          <div class="question">
+            <header>2. Knowledge and professionalism of medical staffs</header>
+            <div class="rating">
+              <input type="radio" name="rate2" id="rate2-5">
+              <label for="rate2-5" class="fas fa-star"></label>
+              <input type="radio" name="rate2" id="rate2-4">
+              <label for="rate2-4" class="fas fa-star"></label>
+              <input type="radio" name="rate2" id="rate2-3">
+              <label for="rate2-3" class="fas fa-star"></label>
+              <input type="radio" name="rate2" id="rate2-2">
+              <label for="rate2-2" class="fas fa-star"></label>
+              <input type="radio" name="rate2" id="rate2-1">
+              <label for="rate2-1" class="fas fa-star"></label>
+            </div>
+          </div>
+          <div class="question">
+            <header>3. Cleanliness of overall hospital environment</header>
+            <div class="rating">
+              <input type="radio" name="rate3" id="rate3-5">
+              <label for="rate3-5" class="fas fa-star"></label>
+              <input type="radio" name="rate3" id="rate3-4">
+              <label for="rate3-4" class="fas fa-star"></label>
+              <input type="radio" name="rate3" id="rate3-3">
+              <label for="rate3-3" class="fas fa-star"></label>
+              <input type="radio" name="rate3" id="rate3-2">
+              <label for="rate3-2" class="fas fa-star"></label>
+              <input type="radio" name="rate3" id="rate3-1">
+              <label for="rate3-1" class="fas fa-star"></label>
+            </div>
+          </div>
+          <div class="question">
+            <header>4. Satisfaction of diagnosis and treatment</header>
+            <div class="rating">
+              <input type="radio" name="rate4" id="rate4-5">
+              <label for="rate4-5" class="fas fa-star"></label>
+              <input type="radio" name="rate4" id="rate4-4">
+              <label for="rate4-4" class="fas fa-star"></label>
+              <input type="radio" name="rate4" id="rate4-3">
+              <label for="rate4-3" class="fas fa-star"></label>
+              <input type="radio" name="rate4" id="rate4-2">
+              <label for="rate4-2" class="fas fa-star"></label>
+              <input type="radio" name="rate4" id="rate4-1">
+              <label for="rate4-1" class="fas fa-star"></label>
+            </div>
+          </div>
+          <div class="question">
+            <header>5. Likelihood of recommending Sunny Smile Hospital to others</header>
+            <div class="rating">
+              <input type="radio" name="rate5" id="rate5-5">
+              <label for="rate5-5" class="fas fa-star"></label>
+              <input type="radio" name="rate5" id="rate5-4">
+              <label for="rate5-4" class="fas fa-star"></label>
+              <input type="radio" name="rate5" id="rate5-3">
+              <label for="rate5-3" class="fas fa-star"></label>
+              <input type="radio" name="rate5" id="rate5-2">
+              <label for="rate5-2" class="fas fa-star"></label>
+              <input type="radio" name="rate5" id="rate5-1">
+              <label for="rate5-1" class="fas fa-star"></label>
+            </div>
+          </div>
+          <div class="question">
+            <header>6. Additional comments or suggestions</header>
+            <div class="textarea">
+              <textarea cols="30" rows="5" placeholder="Describe your experience.."></textarea>
+            </div>
+          </div>
+          <div class="btn">
+            <button type="submit">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      const btn = document.querySelector("button");
+      const post = document.querySelector(".post");
+      const widget = document.querySelector(".star-widget");
+      const editBtn = document.querySelector(".edit");
+      btn.onclick = ()=>{
+        widget.style.display = "none";
+        post.style.display = "block";
+        editBtn.onclick = ()=>{
+          widget.style.display = "block";
+          post.style.display = "none";
+        }
+        return false;
+      }
+    </script>
+  </body>
+</html>
