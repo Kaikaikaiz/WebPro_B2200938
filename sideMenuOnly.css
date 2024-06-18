@@ -13,7 +13,7 @@
   height: 45px;
   width: 45px;
   text-align: center;
-  background: #1b1b1b;
+  background: #ffc145;
   border-radius: 3px;
   cursor: pointer;
   transition: left 0.4s ease;
@@ -34,7 +34,7 @@
   width: 250px;
   height: 100%;
   left: -250px;
-  background: #1b1b1b;
+  background: #4e5176;
   transition: left 0.4s ease;
 }
 .sidebar.show{
@@ -46,21 +46,21 @@
   font-weight: 600;
   line-height: 65px;
   text-align: center;
-  background: #1e1e1e;
+  background: #5B5F97;
   letter-spacing: 1px;
 }
 nav ul{
-  background: #1b1b1b;
+  background: #5B5F97;
   height: 100%;
   width: 100%;
   list-style: none;
 }
 nav ul li{
   line-height: 60px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid #b8b8d139;
 }
 nav ul li:last-child{
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid #b8b8d139;
 }
 nav ul li a{
   position: relative;
@@ -74,12 +74,12 @@ nav ul li a{
   border-left: 3px solid transparent;
 }
 nav ul li.active a{
-  color: cyan;
-  background: #1e1e1e;
-  border-left-color: cyan;
+  color: #ffc145;
+  background: #3a3c61;
+  border-left-color: #202135;
 }
 nav ul li a:hover{
-  background: #1e1e1e;
+  background: #3a3c61;
 }
 nav ul ul{
   position: static;
@@ -105,12 +105,12 @@ nav ul ul li a{
 }
 nav ul li.active ul li a{
   color: #e6e6e6;
-  background: #1b1b1b;
+  background: #70739c;
   border-left-color: transparent;
 }
 nav ul ul li a:hover{
-  color: cyan!important;
-  background: #1e1e1e!important;
+  color: rgb(251, 254, 254)!important;
+  background: #3a3c61!important;
 }
 nav ul li a span{
   position: absolute;

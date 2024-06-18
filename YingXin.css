@@ -52,6 +52,7 @@ form .rating {
 
 .star-widget {
     display: block;
+
 }
 
 .star-widget form {
@@ -63,6 +64,7 @@ form .rating {
 .question {
     margin-bottom: 20px;
     width: 100%;
+    
 }
 
 .question header {
