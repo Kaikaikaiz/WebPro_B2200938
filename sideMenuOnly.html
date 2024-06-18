@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Sidebar Menu with sub-menu</title>
+      <link rel="stylesheet" href="sideMenuOnly.css">
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="btn">
+         <span class="fas fa-bars"></span>
+      </div>
+      <nav class="sidebar">
+         <div class="text">
+            Side Menu
+         </div>
+         <ul>
+            <li class="active"><a href="#">Dashboard</a></li>
+            <li><a href="#">Booking appointment</a></li>
+            <li><a href="#">Doctor Profile</a></li>
+            <li><a href="#">Common Disease</a></li>
+            <li>
+               <a href="#" class="feat-btn">Medical Service
+               <span class="fas fa-caret-down first"></span>
+               </a>
+               <ul class="feat-show">
+                  <li><a href="#">General Pediatrics</a></li>
+                  <li><a href="#">Pediatric Emergency</a></li>
+                  <li><a href="#">Neonatology</a></li>
+                  <li><a href="#">Pediatric Intensive Care Unit</a></li>
+               </ul>
+            </li>
+            <li>
+               <a href="#" class="about-btn">About Us
+               <span class="fas fa-caret-down second"></span>
+               </a>
+               <ul class="about-show">
+                  <li><a href="#">History</a></li>
+                  <li><a href="#">Vision & Mission</a></li>
+                  <li><a href="#">News Board</a></li>
+               </ul>
+            </li>
+            <li><a href="#">Contact Us</a></li>
+            <li>
+                <a href="#" class="acc-btn">My Account
+                <span class="fas fa-caret-down third"></span>
+                </a>
+                <ul class="acc-show">
+                   <li><a href="#">Booking History</a></li>
+                   <li><a href="#">Patient Testimony</a></li>
+                   <li><a href="#">Survey</a></li>
+                </ul>
+             </li>
+         </ul>
+      </nav>
+      <div class="content">
+         <div class="header">
+            Sidebar Menu with sub-menu
+         </div>
+         <p>
+            HTML CSS & Javascript (Full Tutorial)
+         </p>
+      </div>
+      <script>
+         $('.btn').click(function(){
+           $(this).toggleClass("click");
+           $('.sidebar').toggleClass("show");
+         });
+           $('.feat-btn').click(function(){
+             $('nav ul .feat-show').toggleClass("show");
+             $('nav ul .first').toggleClass("rotate");
+           });
+           $('.about-btn').click(function(){
+             $('nav ul .about-show').toggleClass("show1");
+             $('nav ul .second').toggleClass("rotate");
+           });
+           $('.acc-btn').click(function(){
+             $('nav ul .acc-show').toggleClass("show2");
+             $('nav ul .third').toggleClass("rotate");
+           });
+           $('nav ul li').click(function(){
+             $(this).addClass("active").siblings().removeClass("active");
+           });
+      </script>
+   </body>
+</html>
