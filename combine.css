@@ -18,9 +18,9 @@ body, h1, h2, p, ul {
 }
 
 body {
-    font-family: "DraftWerk W00 Bold";
-    font-weight: bolder;
+    font-family:Arial, Helvetica, sans-serif;
     font-size: x-large;
+    position: relative;
 }
 
 nav {
@@ -68,7 +68,7 @@ nav {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff9fd9a;
+    background-color: #fff9fd;
     box-shadow: 0px 4px 16px 0px rgb(44, 33, 15);
     z-index: 1;
     list-style-type: none;
@@ -97,4 +97,291 @@ nav {
 /* Change the color of the dropdown word on hover */
 .dropdown:hover .dropdown-word {
     color: #948467;
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+
+.box {
+    width: 40%;
+    height: 40%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevents content overflow */
+    position: relative; /* Establishes positioning context */
+}
+
+.box img {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.box-content {
+    position: relative;
+    z-index: 1; /* Ensure text and button are above the image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.rectangle-box img{
+    width: 400px;
+    height: 250px;
+    margin-top: 30px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.rectangle-box {
+    display: flex;
+    width: 90%; /* Adjust width as needed */
+    max-width: 600px; /* Set a maximum width for responsiveness */
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px auto; /* Center horizontally with auto margins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.box h3,
+.rectangle-box h3 {
+    font-size: x-large;
+    margin-bottom: 20px;
+}
+
+.box p{
+    font-size: large;
+    color: #555;
+}
+.rectangle-box p {
+    margin-left: 20px;
+    font-size: large;
+    color: #555;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFC145;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.button:hover {
+    background-color: #e0ac2f;
+}
+/* Ensure the footer stays at the bottom of the viewport */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #FF6B6C; /* Light Red */
+    color: white;
+    position: relative;
+    width: 100%;
+}
+ 
+.footerContainer {
+    width: 100%;
+    padding: 70px 30px 20px;
+}
+ 
+.socialIcons {
+    display: flex;
+    justify-content: center;
+}
+ 
+.socialIcons a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+ 
+.socialIcons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+ 
+.socialIcons a:hover {
+    background-color: #111;
+    transition: 0.5s;
+}
+ 
+.socialIcons a:hover i {
+    color: white;
+    transition: 0.5s;
+}
+ 
+.footerNav {
+    margin: 30px 0;
+}
+ 
+.footerNav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+ 
+.footerNav ul li a {
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: x-large;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+ 
+.footerNav ul li a:hover {
+    opacity: 1;
+}
+ 
+.footerBottom {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+ 
+.footerBottom p {
+    /* copyright colour*/
+    color: white;
+}
+ 
+.designer {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0 5px;
+}
+ 
+@media (max-width: 700px) {
+    .footerNav ul {
+        flex-direction: column;
+    }
+    .footerNav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+    }
+    .socialIcons a {
+        padding: 8px;
+        margin: 4px;
+    }
+}
+ 
+.menu-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    cursor: pointer;
+    display: block;
+    z-index: 5;
+}
+ 
+.menu-icon span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: #5B5F97;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+ 
+.menu-icon span:first-child {
+    transform: translateY(0);
+}
+ 
+.menu-icon span:last-child {
+    transform: translateY(0);
+}
+   
+#menu-toggle {
+    display: none;
+}
+ 
+.sidebar {
+    background-color: #5B5F97; /* Main color: Ultra Violet */
+    padding: 20px;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 4;
+}
+ 
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #5B5F97;
+    padding: 20px;
+    transform: translateX(-200px);
+    transition: 0.3s;
+    display: none; /* not to display the bar */
+}
+ 
+#menu-toggle:checked ~ .sidebar {
+    transform: translateX(0);
+    display: block;
+}
+ 
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+ 
+.sidebar li {
+    margin-bottom: 20px;
+}
+ 
+.sidebar a {
+    text-decoration: none;
+    color: #FFFFFB;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #5B5F97;
+}
+ 
+.sidebar a:hover {
+    background-color: #FFC145;
+    color: #5B5F97;
+}
+ 
+#menu-toggle:checked ~ .menu-icon span {
+    background-color: #FFC145;
+}
+ 
+#menu-toggle:checked ~ .menu-icon span:first-child {
+    transform: translateY(0);
+}
+ 
+#menu-toggle:checked ~ .menu-icon span:last-child {
+    transform: translateY(0);
 }

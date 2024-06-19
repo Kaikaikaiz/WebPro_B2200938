@@ -1,63 +1,127 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const newsForm = document.getElementById('news-form');
-    const newsBoard = document.getElementById('news-board');
+    const postForm = document.getElementById('postForm');
+    const postsContainer = document.getElementById('postsContainer');
+    let editIndex = -1;
 
-    let newsData = [
-        {
-            title: "New Wing Opening",
-            description: "We are excited to announce the opening of our new wing.",
-            photo: "new-wing.jpg"
-        },
-        {
-            title: "Health Fair",
-            description: "Join us for a health fair with free screenings and consultations.",
-            photo: "health-fair.jpg"
-        }
-    ];
+    loadPosts();
 
-    function renderNews() {
-        newsBoard.innerHTML = '';
-        newsData.forEach((news, index) => {
-            const newsArticle = document.createElement('div');
-            newsArticle.classList.add('news-article');
+    postForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-            const title = document.createElement('h2');
-            title.textContent = news.title;
+        const title = postForm.title.value;
+        const content = postForm.content.value;
+        
+        const imageFile = postForm.image.files[0];
+        if (imageFile) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const image = event.target.result;
+                const newPost = { image, title, content };
+                
+                if (editIndex === -1) {
+                    addPost(newPost);
+                } else {
+                    updatePost(newPost, editIndex);
+                }
 
-            const description = document.createElement('p');
-            description.textContent = news.description;
-
-            const photo = document.createElement('img');
-            photo.src = news.photo;
-            photo.alt = news.title;
-
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.onclick = () => {
-                newsData.splice(index, 1);
-                renderNews();
+                postForm.reset();
+                editIndex = -1;
             };
+            reader.readAsDataURL(imageFile);
+        }
+    });
 
-            newsArticle.appendChild(title);
-            newsArticle.appendChild(description);
-            newsArticle.appendChild(photo);
-            newsArticle.appendChild(deleteButton);
-
-            newsBoard.appendChild(newsArticle);
+    function loadPosts() {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.forEach(post => {
+            addPostToDOM(post);
         });
     }
 
-    newsForm.onsubmit = (e) => {
-        e.preventDefault();
-        const newNews = {
-            title: e.target.title.value,
-            description: e.target.description.value,
-            photo: e.target.photo.value
-        };
-        newsData.push(newNews);
-        renderNews();
-        newsForm.reset();
-    };
+    function savePosts(posts) {
+        localStorage.setItem('posts', JSON.stringify(posts));
+    }
 
-    renderNews();
+    function addPost(post) {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.push(post);
+        savePosts(posts);
+        addPostToDOM(post);
+    }
+
+    function updatePost(post, index) {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts[index] = post;
+        savePosts(posts);
+        postsContainer.children[index].replaceWith(createPostCard(post, index));
+    }
+
+    function addPostToDOM(post) {
+        const postCard = createPostCard(post, postsContainer.children.length);
+        postsContainer.appendChild(postCard);
+    }
+
+    function createPostCard(post, index) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const imageDiv = document.createElement('div');
+        imageDiv.classList.add('image');
+        const img = document.createElement('img');
+        img.src = post.image;
+        imageDiv.appendChild(img);
+
+        const title = document.createElement('h2');
+        title.innerText = post.title;
+
+        const content = document.createElement('p');
+        content.innerText = post.content;
+
+        const actionsDiv = document.createElement('div');
+        actionsDiv.classList.add('actions');
+
+        const editButton = document.createElement('button');
+        editButton.innerText = 'Edit';
+        editButton.addEventListener('click', () => editPost(post, index));
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.addEventListener('click', () => deletePost(index));
+
+        actionsDiv.appendChild(editButton);
+        actionsDiv.appendChild(deleteButton);
+
+        card.appendChild(imageDiv);
+        card.appendChild(title);
+        card.appendChild(content);
+        card.appendChild(actionsDiv);
+
+        return card;
+    }
+
+    function editPost(post, index) {
+        editIndex = index;
+        const dataTransfer = new DataTransfer();
+        const file = dataURLtoFile(post.image, 'image.jpg');
+        dataTransfer.items.add(file);
+        postForm.image.files = dataTransfer.files;
+        postForm.title.value = post.title;
+        postForm.content.value = post.content;
+    }
+
+    function deletePost(index) {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.splice(index, 1);
+        savePosts(posts);
+        postsContainer.removeChild(postsContainer.children[index]);
+    }
+
+    function dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, { type: mime });
+    }
 });

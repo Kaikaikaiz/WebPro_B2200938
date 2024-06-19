@@ -2,18 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital News</title>
-    <link rel="stylesheet" href="newsboard.css">
+    <title>NewsBoard</title>
+    <link rel="stylesheet" href="newsboardUser.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Hospital News</h1>
-        <div class="news-board" id="news-board">
-            <!-- News articles will be dynamically inserted here -->
+    <section class="event">
+        <div class="title">
+            <h1>Upcoming Event</h1>
         </div>
-    </div>
-
-    <script src="news.js"></script>
+        <div class="container" id="postsContainer">
+            <!-- Posts will be dynamically added here -->
+        </div>
+    </section>
+    <section class="staff">
+        <div class="title">
+            <h1>Little Smiles, Big Health</h1>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="image">
+                    <img src="newsbLaugh.jpg" alt="Laugh" />
+                </div>
+                <h2>Laugh Your Way Healthy!</h2>
+                <p>Laughter isn't just fun—it's good for you too! It can boost your immune system and help you feel less stressed.</p>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="newsbSkin.jpg" alt="Skin" />
+                </div>
+                <h2>Skin: Your Shield!</h2>
+                <p>Your skin is amazing! It's the body's largest organ and helps protect you from germs. Remember to wash your hands to keep your skin—and your whole body—healthy.</p>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="newsbHug.jpg" alt="Hug" />
+                </div>
+                <h2>Hugs for Happiness!</h2>
+                <p>Did you know that hugging someone you care about can actually make you feel happier? Hugs release a hormone called oxytocin, which makes you feel warm and fuzzy inside.</p>
+            </div>
+        </div>
+    </section>
+    <script src="newsboardUser.js"></script>
 </body>
 </html>

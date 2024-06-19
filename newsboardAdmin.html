@@ -2,35 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Hospital News</title>
-    <link rel="stylesheet" href="newsboard.css">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="newsboardAdmin.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Admin - Manage Hospital News</h1>
-        <form id="news-form">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required>
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="photo">Photo URL</label>
-                <input type="url" id="photo" name="photo" required>
-            </div>
-            <button type="submit">Upload News</button>
-        </form>
-        <h2>Existing News</h2>
-        <div class="news-board" id="news-board">
-            <!-- News articles will be dynamically inserted here -->
+    <section class="admin">
+        <div class="title">
+            <h1>Newsboard | Admin Panel</h1>
         </div>
-    </div>
-
-    <script src="admin.js"></script>
+        <div class="form-container">
+            <form id="postForm">
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+                <button type="submit">Add/Update Post</button>
+            </form>
+        </div>
+        <div class="container" id="postsContainer">
+            <!-- Posts will be dynamically added here -->
+        </div>
+    </section>
+    <script src="newsboardAdmin.js"></script>
 </body>
 </html>
-

@@ -1,38 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Example of fetching news data. Replace with your own data source.
-    const newsData = [
-        {
-            title: "New Wing Opening",
-            description: "We are excited to announce the opening of our new wing.",
-            photo: "new-wing.jpg"
-        },
-        {
-            title: "Health Fair",
-            description: "Join us for a health fair with free screenings and consultations.",
-            photo: "health-fair.jpg"
-        }
-    ];
+    const postsContainer = document.getElementById('postsContainer');
+    loadPosts();
 
-    const newsBoard = document.getElementById('news-board');
+    function loadPosts() {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.forEach(post => {
+            addPostToDOM(post);
+        });
+    }
 
-    newsData.forEach(news => {
-        const newsArticle = document.createElement('div');
-        newsArticle.classList.add('news-article');
+    function addPostToDOM(post) {
+        const postCard = createPostCard(post);
+        postsContainer.appendChild(postCard);
+    }
+
+    function createPostCard(post) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const imageDiv = document.createElement('div');
+        imageDiv.classList.add('image');
+        const img = document.createElement('img');
+        img.src = post.image;
+        imageDiv.appendChild(img);
 
         const title = document.createElement('h2');
-        title.textContent = news.title;
+        title.innerText = post.title;
 
-        const description = document.createElement('p');
-        description.textContent = news.description;
+        const content = document.createElement('p');
+        content.innerText = post.content;
 
-        const photo = document.createElement('img');
-        photo.src = news.photo;
-        photo.alt = news.title;
+        card.appendChild(imageDiv);
+        card.appendChild(title);
+        card.appendChild(content);
 
-        newsArticle.appendChild(title);
-        newsArticle.appendChild(description);
-        newsArticle.appendChild(photo);
-
-        newsBoard.appendChild(newsArticle);
-    });
+        return card;
+    }
 });
