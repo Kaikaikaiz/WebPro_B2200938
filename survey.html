@@ -6,70 +6,74 @@
   <title>Sunny Smile Hospital Survey</title>
   <link rel="stylesheet" href="survey.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+  <script src="survey.js" defer></script>
 </head>
 <body>
-    <div class="logoHospital" style="align-items: center;">
+    <div class="logoHospital">
         <img src="LogoSShospital.png" alt="Hospital Logo">
-     </div>
-
-
-  <div class="survey-container">
-    <h1>Voice Your Thoughts: Share & Shape!</h1>
-    <form id="surveyForm">
-      <div class="question">
-        <label for="q1">1. Friendliness of medical staffs:</label>
-        <input type="number" id="q1" name="friendliness" min="1" max="5" required>
-      </div>
-      <div class="question">
-        <label for="q2">2. Knowledge & professionalism of medical staffs:</label>
-        <input type="number" id="q2" name="knowledge" min="1" max="5" required>
-      </div>
-      <div class="question">
-        <label for="q3">3. Cleanliness of overall hospital environment:</label>
-        <input type="number" id="q3" name="cleanliness" min="1" max="5" required>
-      </div>
-      <div class="question">
-        <label for="q4">4. Satisfaction of diagnosis and treatment:</label>
-        <input type="number" id="q4" name="satisfaction" min="1" max="5" required>
-      </div>
-      <div class="question">
-        <label for="q5">5. Likelihood to recommend Sunny Smile Hospital:</label>
-        <input type="number" id="q5" name="recommendation" min="1" max="5" required>
-      </div>
-      <div class="question">
-        <label for="q6">6. Additional comments or suggestions:</label>
-        <textarea id="q6" name="comments" rows="4"></textarea>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-
-  <footer>
-    <div class="footerContainer">
-        <div class="socialIcons">
-            <a href=""><i class="fa-brands fa-facebook"></i></a>
-            <a href=""><i class="fa-brands fa-instagram"></i></a>
-            <a href=""><i class="fa-brands fa-twitter"></i></a>
-            <a href=""><i class="fa-brands fa-google-plus"></i></a>
-            <a href=""><i class="fa-brands fa-youtube"></i></a>
-        </div>
-        <div class="footerNav">
-            <ul><li><a href="">Home</a></li>
-                <li><a href="">Medical Service</a></li>
-                <li><a href="">Our Doctors</a></li>
-                <li><a href="">Appointment Booking</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
-            </ul>
-        </div>
-        
     </div>
-    <div class="footerBottom">
-        <p>Copyright &copy;2024  <span class="designer">SUNNY SMILE HOSPITAL</span></p>
-    </div>
-</footer>
 
-  <script src="script.js"></script>
+    <div class="survey-container">
+        <h1>Voice Your Thoughts: Share & Shape!</h1>
+        <form id="surveyForm">
+            <div class="question">
+                <label for="q1">1. Friendliness of medical staffs:</label>
+                <input type="number" id="q1" name="friendliness" min="1" max="5" required>
+            </div>
+            <div class="question">
+                <label for="q2">2. Knowledge & professionalism of medical staffs:</label>
+                <input type="number" id="q2" name="knowledge" min="1" max="5" required>
+            </div>
+            <div class="question">
+                <label for="q3">3. Cleanliness of overall hospital environment:</label>
+                <input type="number" id="q3" name="cleanliness" min="1" max="5" required>
+            </div>
+            <div class="question">
+                <label for="q4">4. Satisfaction of diagnosis and treatment:</label>
+                <input type="number" id="q4" name="satisfaction" min="1" max="5" required>
+            </div>
+            <div class="question">
+                <label for="q5">5. Likelihood to recommend Sunny Smile Hospital:</label>
+                <input type="number" id="q5" name="recommendation" min="1" max="5" required>
+            </div>
+            <div class="question">
+                <label for="q6">6. Additional comments or suggestions:</label>
+                <textarea id="q6" name="comments" rows="4"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="thank-you-container" id="thankYouContainer">
+        <div class="thank-you-message">
+          <span class="exit-icon" id="exitIcon"><i class="fas fa-times"></i></span>
+          <p>Thanks for choosing Sunny Smile Hospital!<br>Enjoy sunny care and smiles!</p>
+        </div>
+      </div>
+
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footerNav">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Medical Service</a></li>
+                    <li><a href="">Our Doctors</a></li>
+                    <li><a href="">Appointment Booking</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2024 <span class="designer">SUNNY SMILE HOSPITAL</span></p>
+        </div>
+    </footer>
 </body>
 </html>

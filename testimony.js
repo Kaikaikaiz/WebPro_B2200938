@@ -1,13 +1,11 @@
 // Mock data for testimonies
 const testimonies = [
     {
-        username: "John Doe",
-        profilePicture: "balloon.png",
+        username: "MottoSky",
         content: "The staff was incredibly helpful and the facilities were top-notch."
     },
     {
-        username: "Jane Smith",
-        profilePicture: "bomb.jpg",
+        username: "KaizWee",
         content: "I had a wonderful experience with my treatment here."
     }
 ];
@@ -21,10 +19,6 @@ function displayTestimonies() {
         const testimonyElement = document.createElement('div');
         testimonyElement.classList.add('testimony');
 
-        const profileImg = document.createElement('img');
-        profileImg.src = testimony.profilePicture;
-        profileImg.alt = testimony.username;
-
         const usernameElement = document.createElement('span');
         usernameElement.classList.add('username');
         usernameElement.textContent = testimony.username;
@@ -32,7 +26,6 @@ function displayTestimonies() {
         const contentElement = document.createElement('p');
         contentElement.textContent = testimony.content;
 
-        testimonyElement.appendChild(profileImg);
         testimonyElement.appendChild(usernameElement);
         testimonyElement.appendChild(contentElement);
 
@@ -42,20 +35,17 @@ function displayTestimonies() {
 
 // Function to upload testimony
 function uploadTestimony() {
-    const imageInput = document.getElementById('imageUpload');
     const textInput = document.getElementById('textUpload');
 
     const newTestimony = {
-        username: "New User", // This should be dynamically retrieved from user profile
-        profilePicture: URL.createObjectURL(imageInput.files[0]),
+        username: "New User", // Placeholder for dynamic username retrieval
         content: textInput.value
     };
 
     testimonies.push(newTestimony);
     displayTestimonies();
 
-    // Clear input fields
-    imageInput.value = '';
+    // Clear input field
     textInput.value = '';
 }
 
