@@ -1,0 +1,348 @@
+/* Resetting default styles */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+body, h1, h2, p, label, input, button, ul, li, textarea {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #430b0b; /* French Grey */
+    color: #fd4; /* Ultra Violet */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #ffffff; /* Baby Powder */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    margin-top: 20%;
+    margin-bottom: 5%;
+}
+
+form .rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+
+.post {
+    display: none;
+}
+
+.post .text {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.post .edit {
+    color: #5B5F97; /* Ultra Violet */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.star-widget {
+    display: block;
+
+}
+
+.star-widget form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.question {
+    margin-bottom: 20px;
+    width: 100%;
+    
+}
+
+.question header {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #fd4; /* Ultra Violet */
+}
+
+.rating {
+    display: flex;
+    direction: rtl;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 30px;
+    color: #ccc; /* Gray for unselected stars */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating input:not(:checked) ~ label:hover,
+.rating input:not(:checked) ~ label:hover ~ label {
+    color: #FFC145; /* Xanthous for hover stars */
+}
+
+.rating input:checked ~ label {
+    color: #FFC145; /* Xanthous for selected stars */
+}
+
+.rating input:checked ~ label:hover,
+.rating input:checked ~ label:hover ~ label,
+.rating input:checked ~ label:hover ~ input ~ label {
+    color: #FF6B6C; /* Light Red for clicked stars on hover */
+}
+
+.textarea {
+    width: 100%;
+}
+
+.textarea textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #5B5F97; /* Ultra Violet */
+    border-radius: 5px;
+    resize: none;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5B5F97; /* Ultra Violet */
+    color: #FFFFFB; /* Baby Powder */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn button:hover {
+    background-color: #FFC145; /* Xanthous */
+    color: #5B5F97; /* Ultra Violet */
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #FF6B6C; /* Light Red */
+    color: white;
+    position: relative;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+ 
+.footerContainer {
+    width: 100%;
+    padding: 20px 30px;
+}
+ 
+.socialIcons {
+    display: flex;
+    justify-content: center;
+}
+ 
+.socialIcons a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+ 
+.socialIcons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+ 
+.socialIcons a:hover {
+    background-color: #111;
+    transition: 0.5s;
+}
+ 
+.socialIcons a:hover i {
+    color: white;
+    transition: 0.5s;
+}
+ 
+.footerNav {
+    margin: 30px 0;
+}
+ 
+.footerNav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+ 
+.footerNav ul li a {
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+ 
+.footerNav ul li a:hover {
+    opacity: 1;
+}
+ 
+.footerBottom {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+ 
+.footerBottom p {
+    /* copyright colour*/
+    color: white;
+}
+ 
+.designer {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0 5px;
+}
+ 
+@media (max-width: 700px) {
+    .footerNav ul {
+        flex-direction: column;
+    }
+    .footerNav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+    }
+    .socialIcons a {
+        padding: 8px;
+        margin: 4px;
+    }
+}
+ 
+.menu-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    cursor: pointer;
+    display: block;
+    z-index: 5;
+}
+ 
+.menu-icon span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: #5B5F97;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+ 
+.menu-icon span:first-child {
+    transform: translateY(0);
+}
+ 
+.menu-icon span:last-child {
+    transform: translateY(0);
+}
+   
+#menu-toggle {
+    display: none;
+}
+ 
+.sidebar {
+    background-color: #5B5F97; /* Main color: Ultra Violet */
+    padding: 20px;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 4;
+}
+ 
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #5B5F97;
+    padding: 20px;
+    transform: translateX(-200px);
+    transition: 0.3s;
+    display: none; /* not to display the bar */
+}
+ 
+#menu-toggle:checked ~ .sidebar {
+    transform: translateX(0);
+    display: block;
+}
+ 
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+ 
+.sidebar li {
+    margin-bottom: 20px;
+}
+ 
+.sidebar a {
+    text-decoration: none;
+    color: #FFFFFB;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #5B5F97;
+}
+ 
+.sidebar a:hover {
+    background-color: #FFC145;
+    color: #5B5F97;
+}
+ 
+#menu-toggle:checked ~ .menu-icon span {
+    background-color: #FFC145;
+}
+ 
+#menu-toggle:checked ~ .menu-icon span:first-child {
+    transform: translateY(0);
+}
+ 
+#menu-toggle:checked ~ .menu-icon span:last-child {
+    transform: translateY(0);
+}
