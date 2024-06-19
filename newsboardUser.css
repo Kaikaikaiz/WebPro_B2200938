@@ -1,3 +1,15 @@
+.logoHospital {
+  display: flex;
+  justify-content: center; /* Horizontally center align */
+  align-items: center; /* Vertically center align */
+  margin-bottom: 20px; /* Add some space below the logo */
+}
+
+.logoHospital img {
+  width: 200px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
