@@ -187,7 +187,8 @@ nav {
 .button:hover {
     background-color: #e0ac2f;
 }
-/* Ensure the footer stays at the bottom of the viewport */
+
+/*Footer*/
 footer {
     text-align: center;
     padding: 10px;
@@ -199,7 +200,7 @@ footer {
  
 .footerContainer {
     width: 100%;
-    padding: 70px 30px 20px;
+    padding: 30px 35px 10px;
 }
  
 .socialIcons {
@@ -216,7 +217,7 @@ footer {
 }
  
 .socialIcons a i {
-    font-size: 2em;
+    font-size: 30px;
     color: black;
     opacity: 0.9;
 }
@@ -245,7 +246,7 @@ footer {
     color: white;
     margin: 20px;
     text-decoration: none;
-    font-size: x-large;
+    font-size: 20px;
     opacity: 0.7;
     transition: 0.5s;
 }
@@ -263,6 +264,7 @@ footer {
 .footerBottom p {
     /* copyright colour*/
     color: white;
+    font-size: 15px;
 }
  
 .designer {
@@ -270,6 +272,7 @@ footer {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
+    font-size: 15px;
     margin: 0 5px;
 }
  
