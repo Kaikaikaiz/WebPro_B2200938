@@ -35,6 +35,10 @@ nav {
     margin: 20px 0; 
 }
 
+
+
+
+
 .nav-section-a a {
     margin: 0 75px;
     text-decoration: none;
@@ -62,6 +66,7 @@ nav {
     padding: 16px;
     font-size: x-large;
     cursor: pointer;
+    text-decoration: none; /* Ensure links don't have underline by default */
 }
 
 /* Style the dropdown content */
