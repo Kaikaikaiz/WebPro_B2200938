@@ -20,7 +20,7 @@ body {
 
 .key-messages {
     padding: 5px;
-    font-size: 17px;
+    font-size: 22px;
     text-align: center;
     margin: 20px 40px;
     font-family: 'Times New Roman', Times, serif;
@@ -38,7 +38,7 @@ body {
 }
 
 .medical-services-text h1 {
-    font-size: 24px;
+    font-size: 34px;
     text-align: center;
     color: black;
     margin: 0;
@@ -72,12 +72,12 @@ body {
 }
 
 .services-slide h2 {
-    font-size: 24px;
+    font-size: 28px;
     margin: 10px 0;
 }
 
 .services-slide p {
-    font-size: 16px;
+    font-size: 20px;
     color: black;
 }
 
