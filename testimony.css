@@ -16,17 +16,11 @@ body {
     min-height: 100vh;
 }
 
-main {
-    flex: 1; /* Allow the main content to grow and take up available space */
-}
-
 header {
     background-color: #FFFFFB; /* Ultra Violet */
     padding: 10px;
     color: #5B5F97; /* Baby Powder */
     text-align: center;
-    width: 100%;
-    display: flex;
 }
 
 .logo {
@@ -37,111 +31,84 @@ header {
 .logo img {
     width: 150px; /* Adjust the width as needed */
     height: auto;
+}
+
+main {
+    flex: 1; /* Allow the main content to grow and take up available space */
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.menu-icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    cursor: pointer;
-    display: block;
-}
-
-.menu-icon span {
-    display: block;
-    width: 30px;
-    height: 5px;
-    background-color: #5B5F97;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-#menu-toggle:checked ~ .sidebar {
-    transform: translateX(0);
-    display: block;
-}
-
-#menu-toggle:checked ~ .menu-icon span {
-    background-color: #FFC145;
-}
-
-.sidebar {
-    height: 100vh;
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    background-color: #5B5F97;
-    overflow-x: hidden;
-    transition: 0.3s;
-    padding-top: 10%;
-    
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-.sidebar ul li {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #ffc145;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidebar ul li a {
-    color: #fffffb;
-    text-decoration: none;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidebar ul li:hover, .sidebar ul li a:hover {
-    color: #ffc145;
-}
-
-#menu-toggle:checked + .menu-icon + .sidebar {
-    left: 0;
-}
-
-
-.content {
+.testimony-section {
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    border: 5px solid #5b5f97;
     padding: 20px;
     background-color: #FFFFFB; /* Baby Powder */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
 }
 
-.content h2 {
+.testimony-section h1 {
     color: #5B5F97; /* Ultra Violet */
-    margin-bottom: 10px;
-}
-
-.content p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-    color: #5B5F97; /* Ultra Violet */
-}
-
-.history-image {
+    margin-bottom: 20px;
     text-align: center;
-    margin-top: 20px;
-    max-width: 400px;
 }
 
-.history-image img {
-    height: auto;
+#testimonies {
+    margin-bottom: 20px;
+}
+
+.testimony {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #5B5F97;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #B8B8D1; /* French Grey */
+    color: #2b2e5d; /* Ultra Violet */
+}
+
+.testimony img {
+    max-width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.testimony .username {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.upload-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #5B5F97;
+    background-color: #FF6B6C; /* Light Red */
+    color: white;
+}
+
+.upload-bar input[type="text"] {
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.upload-bar button {
+    padding: 10px 20px;
+    background-color: #5B5F97; /* Ultra Violet */
+    color: #FFFFFB; /* Baby Powder */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-bar button:hover {
+    background-color: #FFC145; /* Xanthous */
+    color: #5B5F97; /* Ultra Violet */
 }
 
 footer {
@@ -149,8 +116,6 @@ footer {
     padding: 10px;
     background-color: #FF6B6C; /* Light Red */
     color: white;
-    position: relative;
-    width: 100%;
 }
 
 .footerContainer {
@@ -217,7 +182,6 @@ footer {
 }
 
 .footerBottom p {
-    /* copyright colour*/
     color: white;
 }
 

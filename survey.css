@@ -1,127 +1,207 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
+body {
+  font-family: Arial, sans-serif;
+  background-color: #b8b8d1;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-html,body{
-  display: grid;
-  height: 100%;
-  place-items: center;
-  text-align: center;
-  background: #000;
-}
-.container{
-  position: relative;
-  width: 500px;
-  background: #111;
-  padding: 20px 30px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.container .post{
-  display: none;
-}
-.container .text{
-  font-size: 25px;
-  color: #666;
-  font-weight: 500;
-}
-.container .edit{
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  font-size: 16px;
-  color: #666;
-  font-weight: 500;
-  cursor: pointer;
-}
-.container .edit:hover{
-  text-decoration: underline;
-}
-.container .star-widget input{
-  display: none;
-}
-.star-widget label{
-  font-size: 30px;
-  color: #444;
-  padding: 10px;
-  float: right;
-  transition: all 0.2s ease;
-}
-input:not(:checked) ~ label:hover,
-input:not(:checked) ~ label:hover ~ label{
-  color: #fd4;
-}
-input:checked ~ label{
-  color: #fd4;
 }
 
-.container form{
-  display: block;
-  width: 100%;
-}
-form header{
-  width: 100%;
-  font-size: 18px;
-  color: #fe7;
-  font-weight: 500;
-  text-align: left;
-  margin-bottom: 10px;
-  transition: all 0.2s ease;
-}
-form .question {
-  margin-bottom: 20px;
-  text-align: left;
-}
-form .rating {
+.logoHospital {
   display: flex;
+  justify-content: center; /* Horizontally center align */
+  align-items: center; /* Vertically center align */
+  margin-bottom: 20px; /* Add some space below the logo */
+}
+
+.logoHospital img {
+  width: 200px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.survey-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border: 5px solid #5b5f97;
+  margin-bottom: 50px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+input[type="number"], textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #b8b8d1;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #ffc145;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #fdcd6b;
+}
+
+/*thankyou msg*/
+.thank-you-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 1000; /* Ensure it's above other content */
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
 }
-form .textarea{
-  height: 100px;
-  width: 100%;
-  overflow: hidden;
+
+.thank-you-message {
+  background-color: #ffffff;
+  border: 5px solid #ffc145;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative; /* Ensure the exit icon is positioned relative to this container */
 }
-form .textarea textarea{
-  height: 100%;
-  width: 100%;
-  outline: none;
-  color: #eee;
-  border: 1px solid #333;
-  background: #222;
-  padding: 10px;
-  font-size: 17px;
-  resize: none;
-}
-.textarea textarea:focus{
-  border-color: #444;
-}
-form .btn{
-  height: 45px;
-  width: 100%;
-  margin: 15px 0;
-}
-form .btn button{
-  height: 100%;
-  width: 100%;
-  border: 1px solid #444;
-  outline: none;
-  background: #222;
-  color: #999;
-  font-size: 17px;
-  font-weight: 500;
-  text-transform: uppercase;
+
+.exit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  color: #ff6b6c;
 }
-form .btn button:hover{
-  background: #1b1b1b;
+
+.exit-icon:hover {
+  color: #fc2929;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #FF6B6C; /* Light Red */
+  color: white;
+  position: relative;
+  width: 100%;
+}
+
+.footerContainer {
+  width: 100%;
+  padding: 30px 35px 10px;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+}
+
+.socialIcons a {
+  text-decoration: none;
+  padding: 10px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.socialIcons a i {
+  font-size: 30px;
+  color: black;
+  opacity: 0.9;
+}
+
+.socialIcons a:hover {
+  background-color: #111;
+  transition: 0.5s;
+}
+
+.socialIcons a:hover i {
+  color: white;
+  transition: 0.5s;
+}
+
+.footerNav {
+  margin: 30px 0;
+}
+
+.footerNav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.footerNav ul li a {
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.footerNav ul li a:hover {
+  opacity: 1;
+}
+
+.footerBottom {
+  background-color: #000;
+  padding: 20px;
+  text-align: center;
+}
+
+.footerBottom p {
+  /* copyright colour*/
+  color: white;
+  font-size: 15px;
+}
+
+.designer {
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 15px;
+  margin: 0 5px;
+}
+
+@media (max-width: 700px) {
+  .footerNav ul {
+      flex-direction: column;
+  }
+  .footerNav ul li {
+      width: 100%;
+      text-align: center;
+      margin: 10px;
+  }
+  .socialIcons a {
+      padding: 8px;
+      margin: 4px;
+  }
 }
