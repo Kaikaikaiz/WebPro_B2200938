@@ -1,0 +1,208 @@
+body {
+    font-family: 'Baloo 2', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+}
+
+.hosplogo img {
+    width: 130px;
+    height: auto;
+}
+
+.key-messages {
+    padding: 5px;
+    font-size: 17px;
+    text-align: center;
+    margin: 20px 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.medical-services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the text horizontally */
+    align-items: center; 
+    background-color: #ffc145; /* Yellow background color */
+    padding: 20px; /* Padding inside the text container */
+    color: black; /* Black text color */
+    font-size: 24px;
+}
+
+.medical-services-text h1 {
+    font-size: 24px;
+    text-align: center;
+    color: black;
+    margin: 0;
+}
+
+.slider {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.services-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10%;
+}
+
+.services-slide img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.services-slide h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.services-slide p {
+    font-size: 16px;
+    color: black;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+/*Footer*/
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #FF6B6C; /* Light Red */
+    color: white;
+    position: relative;
+    width: 100%;
+}
+ 
+.footerContainer {
+    width: 100%;
+    padding: 30px 35px 10px;
+}
+ 
+.socialIcons {
+    display: flex;
+    justify-content: center;
+}
+ 
+.socialIcons a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+ 
+.socialIcons a i {
+    font-size: 30px;
+    color: black;
+    opacity: 0.9;
+}
+ 
+.socialIcons a:hover {
+    background-color: #111;
+    transition: 0.5s;
+}
+ 
+.socialIcons a:hover i {
+    color: white;
+    transition: 0.5s;
+}
+ 
+.footerNav {
+    margin: 30px 0;
+}
+ 
+.footerNav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+ 
+.footerNav ul li a {
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+ 
+.footerNav ul li a:hover {
+    opacity: 1;
+}
+ 
+.footerBottom {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+ 
+.footerBottom p {
+    /* copyright colour*/
+    color: white;
+    font-size: 15px;
+}
+ 
+.designer {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0 5px;
+}
+ 
+@media (max-width: 700px) {
+    .footerNav ul {
+        flex-direction: column;
+    }
+    .footerNav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+    }
+    .socialIcons a {
+        padding: 8px;
+        margin: 4px;
+    }
+}
+ 
+ 
