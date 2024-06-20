@@ -3,7 +3,6 @@ let currentSlide = 0;
 function showSlide(index) {
     const slides = document.querySelector('.slides');
     const totalSlides = document.querySelectorAll('.disease-slide').length;
-    const slides = document.querySelectorAll('.service-slide');
 
     if (index >= totalSlides) {
         currentSlide = 0;
