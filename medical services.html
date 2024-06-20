@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="medicalservices.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Services</title>
+</head>
+<body>
+    <header class="header">
+        <figure class="hosplogo">
+            <img src="hosplogo.png" alt="Hospital Logo">
+        </figure>
+    </header>
+
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Doctors</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <article class="medical-services">
+        <div class="medical-services-text">
+            <h1>Medical Services</h1>
+        </div>
+        <div class="key-messages">
+            <p>At Sunny Smile Hospital, we provide a comprehensive range of medical services to ensure the health and well-being of your child. Our dedicated team of pediatric specialists is here to offer the best care for every stage of your child's development.</p>
+        </div>
+        <div class="slider">
+            <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+            <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+            <div class="slides">
+                <div class="services-slide">
+                    <img src="generalpeds.png" alt="General Pediatrics">
+                    <h2>General Pediatrics</h2>
+                    <p>General care of infants, children, and adolescents.</p>
+                    <p>Services Provided:</p>
+                    <p>- Routine check-ups and vaccinations </p>
+                    <p>- Diagnosis and Treatment of Common Illnesses</p>
+                    <p>- Growth and development assessments</p>
+                    <p>- Health screenings</p>
+                </div>
+                <div class="services-slide">
+                    <img src="emergencyservices.png" alt="Pediatric Emergency Services">
+                    <h2>Pediatric Emergency Services</h2>
+                    <p>Services Provided:<p>
+                    <p>Medical care for children facing urgent health conditions.</p>
+                    <p>- Emergency care for acute illnesses and injuries</p>
+                    <p>- Pediatric trauma care</p>
+                    <p>- Treatment of Poisoning and Toxic Exposures</p>
+                    <p>- Treatment of Allergy Attacks</p>
+                </div>
+                <div class="services-slide">
+                    <img src="nicu.png" alt="Neonatology">
+                    <h2>Neonatology</h2>
+                    <p>Intensive care of newborns, particularly premature infants and those with critical health issues, typically from birth up to a few months old.</p>
+                    <p>Services Provided:</p>
+                    <p>- Respiratory support (e.g., CPAP, ventilators for newborns)</p>
+                    <p>- Monitoring and treatment</p>
+                    <p>- High-risk newborn follow-up</p>
+                </div>
+                <div class="services-slide">
+                    <img src="picu.png" alt="Pediatric Intensive Care Unit (PICU)">
+                    <h2>Pediatric Intensive Care Unit (PICU)</h2>
+                    <p>Intensive care for critically ill children and adolescents</p>
+                    <p>Services Provided:<p></p>
+                    <p>- Advanced respiratory support (e.g., mechanical ventilation)</p>
+                    <p>- Hemodynamic monitoring and support</p>
+                    <p>- Management of complex metabolic conditions</p>
+                    <p>- Intensive post-operative care</p>
+                </div>
+                <div class="services-slide">
+                    <img src="pediatricsurgery.png" alt="Pediatric Surgery">
+                    <h2>Pediatric Surgery</h2>
+                    <p>Specialised surgery focused on the surgical treatment of diseases, conditions, and injuries in infants, children, and adolescents</p>
+                    <p>Services Provided:</p>
+                    <p>Specialised surgeries such as</p>
+                    <p>- General Pediatric Surgery: Appendectomies, Circumcisions, Hernia repairs, etc.</p>
+                    <p>- Cardiac Surgery: Congenital Heart Defects
+                    <p>- Neurosurgery: Brain Tumors, Spina bifida, Hydrocephalus, etc.</p> 
+                    <p>- Orthopedic: Surgery for muscoloskeletal issues</p>
+                    <p>- Neonatal Surgery: Surgery for newborns with congenital anomalies</p>
+                </div>
+                <div class="services-slide">
+                    <img src="nutrition.png" alt="Nutritional Services">
+                    <h2>Nutritional Services</h2>
+                    <p>Ensuring that children receive the necessary nutrients for their growth and overall health. Manages various dietary needs catered to specific health conditions.</p>
+                    <p>Services Provided:</p>
+                    <p>- Dietary Assesments</p>
+                    <p>- Personalised Nutrition Plans</p>
+                    <p>- Nutrional Education and Counseling</p>
+                </div>
+            </div>
+            <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+            <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footerNav">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Medical Services</a></li>
+                    <li><a href="">Our Doctors</a></li>
+                    <li><a href="">Appointment Booking</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2024 <span class="designer">Sunny Smile Hospital</span></p>
+        </div>
+    </footer>
+    <script src="medical.js"></script>
+</body>
+</html>

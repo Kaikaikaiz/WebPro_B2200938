@@ -1,0 +1,189 @@
+.header {
+    display: flex;
+    justify-content: center; /* Centers the logo horizontally */
+    align-items: center; /* Centers the logo vertically */
+    height: 140px; /* Adjust the height as needed */
+}
+
+.hosplogo img {
+    width: 130px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background: #5B5F97;
+}
+
+.sidebar {
+    p: 60px;
+    z-index: 1;
+    height: 100vh;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: #5B5F97;
+    overflow-x: hidden;
+    padding-top: 10%;
+    transition: 0.3s;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffc145;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar ul li a {
+    color: #fffffb;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar ul li:hover, .sidebar ul li a:hover {
+    color: #ffc145;
+}
+
+#menu-toggle:checked + .menu-icon + .sidebar {
+    left: 0;
+}
+
+
+.key-messages {
+    padding: 5px;
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 40px;
+}
+
+.common-diseases-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffc145;
+    padding: 20px;
+    color: black;
+}
+
+.common-diseases-text h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    margin: 0;
+    font-size: 24px;
+}
+
+.slider {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.disease-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10%;
+}
+
+.disease-slide img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.disease-slide h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.disease-slide p {
+    font-size: 16px;
+    color: black;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+let currentSlide = 0;
+
+function showSlide(index) {
+    const slides = document.querySelector('.slides');
+    const totalSlides = document.querySelectorAll('.disease-slide').length;
+
+    if (index >= totalSlides) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = totalSlides - 1;
+    } else {
+        currentSlide = index;
+    }
+
+    slides.style.transform = `translateX(${-currentSlide * 100}%)`;
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+// Auto-slide (optional)
+// setInterval(nextSlide, 5000); // Change slide every 5 seconds
