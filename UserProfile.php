@@ -93,7 +93,7 @@ $email = isset($_GET['email']) ? $_GET['email'] : 'No Email Provided';
         document.addEventListener("DOMContentLoaded", function() {
             var testimonyButton = document.querySelector('.testimony-button');
             testimonyButton.addEventListener('click', function() {
-                window.location.href = 'patient-testimonies.html';
+                window.location.href = 'testimony.html';
             });
         });
  
