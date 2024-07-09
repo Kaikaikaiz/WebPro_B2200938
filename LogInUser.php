@@ -8,7 +8,7 @@ ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "myproject2024";
+$dbname = "sunnysmile";
 
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -125,7 +125,7 @@ $conn->close();
             </form>
 
 
-            <p>Don't have an account yet? <a href="MyAccountSignUp.html">Sign Up</a></p>
+            <p>Don't have an account yet? <a href="MyAccountSignUp.php">Sign Up</a></p>
             <p>Forgot your password? <a href="ForgotPassword.html">Reset it here</a></p>
         </section>
     </main>
