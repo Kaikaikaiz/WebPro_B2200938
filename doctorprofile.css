@@ -300,3 +300,7 @@ footer {
     line-height: 1.6; /* Slightly adjusted line height for readability */
     font-size: 16px; /* Ensure consistency in font size */
 }
+}
+ overflow-x: hidden;
+    width: 100%;
+}
