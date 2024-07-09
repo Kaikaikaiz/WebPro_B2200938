@@ -2,62 +2,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const postForm = document.getElementById('postForm');
     const postsContainer = document.getElementById('postsContainer');
     let editIndex = -1;
+    let posts = [];
 
     loadPosts();
 
     postForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const title = postForm.title.value;
-        const content = postForm.content.value;
-        
-        const imageFile = postForm.image.files[0];
-        if (imageFile) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const image = event.target.result;
-                const newPost = { image, title, content };
-                
-                if (editIndex === -1) {
-                    addPost(newPost);
-                } else {
-                    updatePost(newPost, editIndex);
-                }
-
-                postForm.reset();
-                editIndex = -1;
-            };
-            reader.readAsDataURL(imageFile);
+        const formData = new FormData(postForm);
+        if (editIndex !== -1) {
+            formData.append('id', posts[editIndex].id);
         }
+
+        fetch('postManage.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            loadPosts();
+            postForm.reset();
+            editIndex = -1;
+        });
     });
 
     function loadPosts() {
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts.forEach(post => {
-            addPostToDOM(post);
+        fetch('postFetch.php')
+        .then(response => response.json())
+        .then(data => {
+            posts = data;
+            postsContainer.innerHTML = '';
+            posts.forEach((post, index) => {
+                addPostToDOM(post, index);
+            });
         });
     }
 
-    function savePosts(posts) {
-        localStorage.setItem('posts', JSON.stringify(posts));
-    }
-
-    function addPost(post) {
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts.push(post);
-        savePosts(posts);
-        addPostToDOM(post);
-    }
-
-    function updatePost(post, index) {
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts[index] = post;
-        savePosts(posts);
-        postsContainer.children[index].replaceWith(createPostCard(post, index));
-    }
-
-    function addPostToDOM(post) {
-        const postCard = createPostCard(post, postsContainer.children.length);
+    function addPostToDOM(post, index) {
+        const postCard = createPostCard(post, index);
         postsContainer.appendChild(postCard);
     }
 
@@ -101,27 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function editPost(post, index) {
         editIndex = index;
-        const dataTransfer = new DataTransfer();
-        const file = dataURLtoFile(post.image, 'image.jpg');
-        dataTransfer.items.add(file);
-        postForm.image.files = dataTransfer.files;
         postForm.title.value = post.title;
         postForm.content.value = post.content;
+        // Handle image editing if needed
     }
 
     function deletePost(index) {
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts.splice(index, 1);
-        savePosts(posts);
-        postsContainer.removeChild(postsContainer.children[index]);
-    }
+        const formData = new FormData();
+        formData.append('id', posts[index].id);
 
-    function dataURLtoFile(dataurl, filename) {
-        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-        while (n--) {
-            u8arr[n] = bstr.charCodeAt(n);
-        }
-        return new File([u8arr], filename, { type: mime });
+        fetch('postDelete.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            loadPosts();
+        });
     }
 });

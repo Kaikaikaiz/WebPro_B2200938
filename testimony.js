@@ -5,49 +5,59 @@ const testimonies = [
         content: "The staff was incredibly helpful and the facilities were top-notch."
     },
     {
-        username: "KaizWee",
+        username: "Kaigene",
         content: "I had a wonderful experience with my treatment here."
     }
 ];
 
-// Function to display testimonies
-function displayTestimonies() {
-    const testimonyContainer = document.getElementById('testimonies');
-    testimonyContainer.innerHTML = '';
+// Function to fetch and display testimonies
+function fetchTestimonies() {
+    fetch('testimonies.php')
+        .then(response => response.json())
+        .then(data => {
+            const testimonyContainer = document.getElementById('testimonies');
+            testimonyContainer.innerHTML = '';
 
-    testimonies.forEach(testimony => {
-        const testimonyElement = document.createElement('div');
-        testimonyElement.classList.add('testimony');
+            data.forEach(testimony => {
+                const testimonyElement = document.createElement('div');
+                testimonyElement.classList.add('testimony');
 
-        const usernameElement = document.createElement('span');
-        usernameElement.classList.add('username');
-        usernameElement.textContent = testimony.username;
+                const usernameElement = document.createElement('span');
+                usernameElement.classList.add('username');
+                usernameElement.textContent = testimony.username;
 
-        const contentElement = document.createElement('p');
-        contentElement.textContent = testimony.content;
+                const contentElement = document.createElement('p');
+                contentElement.textContent = testimony.content;
 
-        testimonyElement.appendChild(usernameElement);
-        testimonyElement.appendChild(contentElement);
+                testimonyElement.appendChild(usernameElement);
+                testimonyElement.appendChild(contentElement);
 
-        testimonyContainer.appendChild(testimonyElement);
+                testimonyContainer.appendChild(testimonyElement);
+            });
+        });
+}
+
+// Function to upload a new testimony
+function uploadTestimony() {
+    const textInput = document.getElementById('textUpload');
+    const username = "New User"; // Replace with dynamic username retrieval
+
+    const formData = new FormData();
+    formData.append('content', textInput.value);
+    formData.append('username', username);
+
+    fetch('testimonies.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        fetchTestimonies();
+        textInput.value = '';
     });
 }
 
-// Function to upload testimony
-function uploadTestimony() {
-    const textInput = document.getElementById('textUpload');
+// Fetch testimonies on page load
+window.onload = fetchTestimonies;
 
-    const newTestimony = {
-        username: "New User", // Placeholder for dynamic username retrieval
-        content: textInput.value
-    };
-
-    testimonies.push(newTestimony);
-    displayTestimonies();
-
-    // Clear input field
-    textInput.value = '';
-}
-
-// Display testimonies on page load
-window.onload = displayTestimonies;
