@@ -12,7 +12,7 @@ const testimonies = [
 
 // Function to fetch and display testimonies
 function fetchTestimonies() {
-    fetch('testimonies.php')
+    fetch('testimonyFetch.php')
         .then(response => response.json())
         .then(data => {
             const testimonyContainer = document.getElementById('testimonies');
@@ -37,26 +37,21 @@ function fetchTestimonies() {
         });
 }
 
-// Function to upload a new testimony
 function uploadTestimony() {
-    const textInput = document.getElementById('textUpload');
-    const username = "New User"; // Replace with dynamic username retrieval
+    var content = document.getElementById("textUpload").value;
 
-    const formData = new FormData();
-    formData.append('content', textInput.value);
-    formData.append('username', username);
-
-    fetch('testimonies.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        fetchTestimonies();
-        textInput.value = '';
-    });
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "testimonyUpload", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert(xhr.responseText);
+            location.reload(); // Reload the page to show the new testimony
+        }
+    };
+    xhr.send("content=" + encodeURIComponent(content));
 }
+
 
 // Fetch testimonies on page load
 window.onload = fetchTestimonies;
