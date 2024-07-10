@@ -6,11 +6,15 @@ body, h1, p, label, input, button, ul, li, figure {
 }
 
 body {
-    font-family: Arial, Arial, Helvetica, sans-serif;
-    background-color:navajowhite; /* French Grey */
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: navajowhite; /* Navajo White */
     color: #B8B8D1; /* Ultra Violet */
     margin: 0;
     padding: 0;
+    font-size: x-large;
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .logo img {
@@ -27,19 +31,6 @@ header {
     align-items: center;
 }
 
-body, h1, h2, p, ul {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: x-large;
-    position: relative;
-    overflow-x: hidden;
-    width: 100%;
-}
-
 nav {
     text-align: center;
     width: 100%;
@@ -51,10 +42,6 @@ nav {
     justify-content: center; 
     margin: 20px 0; 
 }
-
-
-
-
 
 .nav-section-a a {
     margin: 0 75px;
@@ -90,7 +77,7 @@ nav {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff9fd;
+    background-color: #fff9fd; /* Off-White */
     box-shadow: 0px 4px 16px 0px rgb(44, 33, 15);
     z-index: 1;
     list-style-type: none;
@@ -100,7 +87,7 @@ nav {
 
 /* Style the links inside the dropdown */
 .dropdown-content li a {
-    color: #5B5F97;
+    color: #5B5F97; /* Ultra Violet */
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -120,7 +107,6 @@ nav {
 .dropdown:hover .dropdown-word {
     color: #948467;
 }
-
 
 main {
     background-image: url('clinick.jpeg');
@@ -175,17 +161,17 @@ footer {
     position: relative;
     width: 100%;
 }
- 
+
 .footerContainer {
     width: 100%;
     padding: 30px 35px 10px;
 }
- 
+
 .socialIcons {
     display: flex;
     justify-content: center;
 }
- 
+
 .socialIcons a {
     text-decoration: none;
     padding: 10px;
@@ -193,33 +179,33 @@ footer {
     margin: 10px;
     border-radius: 50%;
 }
- 
+
 .socialIcons a i {
     font-size: 30px;
     color: black;
     opacity: 0.9;
 }
- 
+
 .socialIcons a:hover {
     background-color: #111;
     transition: 0.5s;
 }
- 
+
 .socialIcons a:hover i {
     color: white;
     transition: 0.5s;
 }
- 
+
 .footerNav {
     margin: 30px 0;
 }
- 
+
 .footerNav ul {
     display: flex;
     justify-content: center;
     list-style-type: none;
 }
- 
+
 .footerNav ul li a {
     color: white;
     margin: 20px;
@@ -228,23 +214,22 @@ footer {
     opacity: 0.7;
     transition: 0.5s;
 }
- 
+
 .footerNav ul li a:hover {
     opacity: 1;
 }
- 
+
 .footerBottom {
     background-color: #000;
     padding: 20px;
     text-align: center;
 }
- 
+
 .footerBottom p {
-    /* copyright colour*/
     color: white;
     font-size: 15px;
 }
- 
+
 .designer {
     opacity: 0.7;
     text-transform: uppercase;
@@ -253,7 +238,7 @@ footer {
     font-size: 15px;
     margin: 0 5px;
 }
- 
+
 @media (max-width: 700px) {
     .footerNav ul {
         flex-direction: column;
@@ -268,4 +253,3 @@ footer {
         margin: 4px;
     }
 }
- 
