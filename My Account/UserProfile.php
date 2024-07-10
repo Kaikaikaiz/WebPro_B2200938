@@ -1,75 +1,26 @@
 <?php
 session_start();
 
-// エラーレポートを有効にする
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sunnysmile";
-
-// Create a connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Get form data
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Prepare and bind
-    $stmt = $conn->prepare("SELECT id, username, password, email FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-
-    // Execute the statement
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($id, $username, $hashed_password, $email);
-    $stmt->fetch();
-
-    // Verify the password
-    if ($stmt->num_rows > 0 && password_verify($password, $hashed_password)) {
-        // Set session variables
-        $_SESSION['username'] = $username;
-        $_SESSION['email'] = $email;
-
-        // Redirect to UserAccount.php
-        header("Location: UserAccount.php");
-        exit();
-    } else {
-        echo "Invalid username or password";
-    }
-
-    // Close the statement
-    $stmt->close();
-}
-
-// Close the connection
-$conn->close();
+// Get user data from query parameters
+$username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
+$email = isset($_GET['email']) ? $_GET['email'] : 'No Email Provided';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="LogInUser.css"> <!-- Link your CSS file -->
+    <title>User Profile</title>
+    <link rel="stylesheet" href="UserProfile.css"> <!-- Link your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <figure class="logo">
-            <img src="hospitalLogo.jpeg" alt="Hospital Logo">
+            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
-        <nav style="background-color:#FFC145 ;">
+        <nav style="background-color:#FFC145;">
             <div class="nav-section-a">
                 <a href="#Booking Appointment">Booking Appointment</a>
                 <a href="#Doctor Profile">Doctor Profile</a>
@@ -102,33 +53,16 @@ $conn->close();
         </nav>
     </header>
     <div class="title-band">
-        <h1>Login / Sign Up</h1>
+        <h1>User Profile</h1>
     </div>
     <main>
-        <section class="login-form">
-            <h2>Login</h2>
-
-            <?php
-            if (isset($_GET['error']) && $_GET['error'] == 1) {
-                echo '<p style="color:red;">Incorrect email or password. Please try again.</p>';
-            }
-            ?>
-
-            <form action="login.php" method="POST">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Login</button>
-            </form>
-
-
-            <p>Don't have an account yet? <a href="MyAccountSignUp.php">Sign Up</a></p>
-            <p>Forgot your password? <a href="ForgotPassword.html">Reset it here</a></p>
+        <section class="profile-info">
+            <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
+            <p>Email: <?php echo htmlspecialchars($email); ?></p>
+            <button onclick="window.location.href='login.php'">Log In</button>
         </section>
     </main>
+
     <footer>
         <div class="footerContainer">
             <div class="socialIcons">
@@ -152,6 +86,29 @@ $conn->close();
         <div class="footerBottom">
             <p>Copyright &copy;2024  <span class="designer">SUNNY SMILE HOSPITAL</span></p>
         </div>
-    </footer>
+    </footer> 
+
+ 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var testimonyButton = document.querySelector('.testimony-button');
+            testimonyButton.addEventListener('click', function() {
+                window.location.href = 'testimony.html';
+            });
+        });
+ 
+        function previewImage(event) {
+            var input = event.target;
+            var reader = new FileReader();
+ 
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('profileImage');
+                output.src = dataURL;
+            };
+ 
+            reader.readAsDataURL(input.files[0]);
+        }
+</script>
 </body>
 </html>

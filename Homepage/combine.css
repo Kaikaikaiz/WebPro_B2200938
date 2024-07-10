@@ -1,13 +1,28 @@
-.header {
-    display: flex;
-    justify-content: center; /* Centers the logo horizontally */
-    align-items: center; /* Centers the logo vertically */
-    height: 140px; /* Adjust the height as needed */
+.logo img {
+    width: 200px;
+    height: auto;
+    margin-bottom: -20px;
 }
 
-.hosplogo img {
-    width: 130px; /* Adjust the width as needed */
-    height: auto; /* Maintain the aspect ratio */
+header {
+    background-color: rgb(255, 255, 255);
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 nav {
@@ -20,15 +35,16 @@ nav {
     display: flex; 
     justify-content: center; 
     margin: 20px 0; 
-    font-family: Arial;
 }
+
+
+
+
 
 .nav-section-a a {
     margin: 0 75px;
     text-decoration: none;
     color: rgba(13, 12, 12, 0.705);
-    font-family: Arial;
-    font-size: x-large;
 }
 
 .nav-section-b .dropdown {
@@ -90,93 +106,93 @@ nav {
     color: #948467;
 }
 
-.key-messages {
-    padding: 5px;
-    color: #333;
-    font-size: 22px;
-    text-align: center;
-    margin: 20px 40px;
-    font-family: Arial, Helvetica, sans-serif;
-
+.boxes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
-.common-diseases-text {
+
+.box {
+    width: 40%;
+    height: 40%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevents content overflow */
+    position: relative; /* Establishes positioning context */
+}
+
+.box img {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.box-content {
+    position: relative;
+    z-index: 1; /* Ensure text and button are above the image */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #B8B8D1;
-    padding: 24px;
-    color: black;
+    height: 100%;
 }
 
-.common-diseases-text h1 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 18px;
-    text-align: center;
-    color: black;
-    margin-bottom: 20px;
-    margin: 0;
-    font-size: 34px;
+.rectangle-box img{
+    width: 400px;
+    height: 250px;
+    margin-top: 30px;
+    object-fit: cover;
+    border-radius: 8px;
 }
-
-.slider {
-    position: relative;
-    width: 80%;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.slides {
+.rectangle-box {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    
-}
-
-.disease-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 5%;
+    width: 90%; /* Adjust width as needed */
+    max-width: 600px; /* Set a maximum width for responsiveness */
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
     text-align: center;
-    background-color: #f9f9f9;
-    border-radius: 10%;
-    margin-bottom: 8%;
+    margin: 20px auto; /* Center horizontally with auto margins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.disease-slide img {
-    width: 50%;
-    height: auto;
-    border-radius: 10px;
+
+.box h3,
+.rectangle-box h3 {
+    font-size: x-large;
+    margin-bottom: 20px;
 }
 
-.disease-slide h2 {
-    font-size: 28px;
-    margin: 10px 0;
+.box p{
+    font-size: large;
+    color: #555;
+}
+.rectangle-box p {
+    margin-left: 20px;
+    font-size: large;
+    color: #555;
 }
 
-.disease-slide p {
-    font-size: 20px;
-    color: black;
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 18px;
-    padding: 10px;
-    cursor: pointer;
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFC145;
+    color: #fff;
+    text-decoration: none;
     border-radius: 5px;
+    margin-top: 30px;
 }
 
-.arrow.left {
-    left: 10px;
-}
-
-.arrow.right {
-    right: 10px;
+.button:hover {
+    background-color: #e0ac2f;
 }
 
 /*Footer*/
@@ -280,8 +296,4 @@ footer {
         padding: 8px;
         margin: 4px;
     }
-}
-}
- overflow-x: hidden;
-    width: 100%;
 }

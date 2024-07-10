@@ -22,7 +22,7 @@ $email = $_SESSION['email'];
 <body>
     <header>
         <figure class="logo">
-            <img src="hospitalLogo.jpeg" alt="Hospital Logo">
+            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
         <nav style="background-color:#FFC145 ;">
             <div class="nav-section-a">
@@ -64,7 +64,7 @@ $email = $_SESSION['email'];
         <section class="profile">
             <div class="profile-info">
                 <div class="profile-image">
-                    <img id="profileImage" src="profileImage.webp" alt="Profile Image">
+                    <img id="../image/profileImage" src="profileImage.webp" alt="Profile Image">
                 </div>
                 <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)">
                 <div class="profile-details">

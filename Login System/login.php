@@ -83,7 +83,7 @@ $conn->close();
 <body>
     <header>
         <figure class="logo">
-            <img src="hospitalLogo.jpeg" alt="Hospital Logo">
+            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
         <nav style="background-color:#FFC145 ;">
             <div class="nav-section-a">

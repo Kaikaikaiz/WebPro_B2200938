@@ -105,94 +105,77 @@ nav {
 .dropdown:hover .dropdown-word {
     color: #948467;
 }
-
-.boxes {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-
-.box {
-    width: 40%;
-    height: 40%;
-    background-color: #f0f0f0;
+.booking-form-section {
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form-section h1 {
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Prevents content overflow */
-    position: relative; /* Establishes positioning context */
+    color: #5B5F97;
 }
 
-.box img {
-    width: 400px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    align-items: center;
-    top: 0;
-    left: 0;
+.booking-form-section p {
+    text-align: center;
+    color: black;
 }
 
-.box-content {
-    position: relative;
-    z-index: 1; /* Ensure text and button are above the image */
+form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
 }
 
-.rectangle-box img{
-    width: 400px;
-    height: 250px;
-    margin-top: 30px;
-    object-fit: cover;
+fieldset {
+    border: 1px solid #ccc;
     border-radius: 8px;
-}
-.rectangle-box {
-    display: flex;
-    width: 90%; /* Adjust width as needed */
-    max-width: 600px; /* Set a maximum width for responsiveness */
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    margin: 20px auto; /* Center horizontally with auto margins */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-.box h3,
-.rectangle-box h3 {
-    font-size: x-large;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
-.box p{
-    font-size: large;
-    color: #555;
-}
-.rectangle-box p {
-    margin-left: 20px;
-    font-size: large;
-    color: #555;
+legend {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #5B5F97;
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #FFC145;
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+small {
+    display: block;
+    margin-top: 5px;
+    color: rgba(250, 123, 123, 0.868);
+}
+
+button {
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #5B5F97;
     color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.button:hover {
-    background-color: #e0ac2f;
+button:hover {
+    background-color: #ffc145;
 }
 
 /*Footer*/
@@ -298,100 +281,4 @@ footer {
     }
 }
  
-.menu-icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    cursor: pointer;
-    display: block;
-    z-index: 5;
-}
  
-.menu-icon span {
-    display: block;
-    width: 30px;
-    height: 5px;
-    background-color: #5B5F97;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
- 
-.menu-icon span:first-child {
-    transform: translateY(0);
-}
- 
-.menu-icon span:last-child {
-    transform: translateY(0);
-}
-   
-#menu-toggle {
-    display: none;
-}
- 
-.sidebar {
-    background-color: #5B5F97; /* Main color: Ultra Violet */
-    padding: 20px;
-    width: 20%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-    z-index: 4;
-}
- 
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-.sidebar {
-    width: 200px;
-    height: 100vh;
-    background-color: #5B5F97;
-    padding: 20px;
-    transform: translateX(-200px);
-    transition: 0.3s;
-    display: none; /* not to display the bar */
-}
- 
-#menu-toggle:checked ~ .sidebar {
-    transform: translateX(0);
-    display: block;
-}
- 
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
- 
-.sidebar li {
-    margin-bottom: 20px;
-}
- 
-.sidebar a {
-    text-decoration: none;
-    color: #FFFFFB;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #5B5F97;
-}
- 
-.sidebar a:hover {
-    background-color: #FFC145;
-    color: #5B5F97;
-}
- 
-#menu-toggle:checked ~ .menu-icon span {
-    background-color: #FFC145;
-}
- 
-#menu-toggle:checked ~ .menu-icon span:first-child {
-    transform: translateY(0);
-}
- 
-#menu-toggle:checked ~ .menu-icon span:last-child {
-    transform: translateY(0);
-}
