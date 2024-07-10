@@ -1,29 +1,24 @@
 <?php
-$servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = ""; // Default XAMPP password
-$dbname = "sunnysmile";
+// Include your database connection file
+require_once 'testimonyDatabase.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+// Check if form data has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_SESSION["username"]; // Assuming you have set the session with username during login
-    $content = $conn->real_escape_string($_POST["content"]);
+    // Assume you have a session or user authentication mechanism to get user ID
+    $user_id = $_SESSION['user_id']; // Adjust as per your authentication mechanism
+    
+    // Escape user inputs for security
+    $textUpload = mysqli_real_escape_string($conn, $_POST['textUpload']);
 
-    $sql = "INSERT INTO testimonies (username, content) VALUES ('$username', '$content')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "New testimony created successfully";
+    // Insert testimony into the database
+    $query = "INSERT INTO testimonies (user_id, text) VALUES ('$user_id', '$textUpload')";
+    if (mysqli_query($conn, $query)) {
+        echo "Testimony uploaded successfully!";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error uploading testimony: " . mysqli_error($conn);
     }
-
-    $conn->close();
 }
+
+// Close connection
+mysqli_close($conn);
 ?>

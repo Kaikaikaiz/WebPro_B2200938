@@ -1,58 +1,69 @@
-// Mock data for testimonies
-const testimonies = [
-    {
-        username: "MottoSky",
-        content: "The staff was incredibly helpful and the facilities were top-notch."
-    },
-    {
-        username: "Kaigene",
-        content: "I had a wonderful experience with my treatment here."
-    }
-];
-
-// Function to fetch and display testimonies
+// Function to fetch testimonies from server
 function fetchTestimonies() {
-    fetch('testimonyFetch.php')
+    fetch('fetch_testimonies.php')
         .then(response => response.json())
         .then(data => {
-            const testimonyContainer = document.getElementById('testimonies');
-            testimonyContainer.innerHTML = '';
-
-            data.forEach(testimony => {
-                const testimonyElement = document.createElement('div');
-                testimonyElement.classList.add('testimony');
-
-                const usernameElement = document.createElement('span');
-                usernameElement.classList.add('username');
-                usernameElement.textContent = testimony.username;
-
-                const contentElement = document.createElement('p');
-                contentElement.textContent = testimony.content;
-
-                testimonyElement.appendChild(usernameElement);
-                testimonyElement.appendChild(contentElement);
-
-                testimonyContainer.appendChild(testimonyElement);
-            });
-        });
+            // Process fetched testimonies
+            displayTestimonies(data);
+        })
+        .catch(error => console.error('Error fetching testimonies:', error));
 }
 
+// Function to display testimonies on the page
+function displayTestimonies(testimonies) {
+    const testimonyContainer = document.getElementById('testimonies');
+    testimonyContainer.innerHTML = '';
+
+    testimonies.forEach(testimony => {
+        const testimonyElement = document.createElement('div');
+        testimonyElement.classList.add('testimony');
+
+        const usernameElement = document.createElement('span');
+        usernameElement.classList.add('username');
+        usernameElement.textContent = testimony.username;
+
+        const contentElement = document.createElement('p');
+        contentElement.textContent = testimony.content;
+
+        testimonyElement.appendChild(usernameElement);
+        testimonyElement.appendChild(contentElement);
+
+        testimonyContainer.appendChild(testimonyElement);
+    });
+}
+
+// Function to upload testimony
 function uploadTestimony() {
-    var content = document.getElementById("textUpload").value;
+    const textInput = document.getElementById('textUpload').value;
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "testimonyUpload", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            alert(xhr.responseText);
-            location.reload(); // Reload the page to show the new testimony
+    // Check if input is empty
+    if (!textInput.trim()) {
+        alert('Please enter a testimony.');
+        return;
+    }
+
+    fetch('upload_testimony.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: textInput }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to upload testimony');
         }
-    };
-    xhr.send("content=" + encodeURIComponent(content));
+        return response.json();
+    })
+    .then(data => {
+        console.log('Testimony uploaded successfully:', data.message);
+        // Fetch testimonies again to update the list
+        fetchTestimonies();
+    })
+    .catch(error => console.error('Error uploading testimony:', error));
 }
 
-
-// Fetch testimonies on page load
-window.onload = fetchTestimonies;
-
+// Display testimonies on page load
+window.onload = function() {
+    fetchTestimonies();
+}

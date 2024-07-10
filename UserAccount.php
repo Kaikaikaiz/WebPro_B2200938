@@ -120,7 +120,7 @@ $email = $_SESSION['email'];
         document.addEventListener("DOMContentLoaded", function() {
             var testimonyButton = document.querySelector('.testimony-button');
             testimonyButton.addEventListener('click', function() {
-                window.location.href = 'testimonyFetch.php';
+                window.location.href = 'testimony.html';
             });
             var profileLink = document.getElementById('myProfileLink');
             profileLink.addEventListener('click', function(event) {
