@@ -1,17 +1,28 @@
-body{
-    overflow-x: hidden;
-    width: 100%;
-}
-.header {
-    display: flex;
-    justify-content: center; /* Centers the logo horizontally */
-    align-items: center; /* Centers the logo vertically */
-    height: 140px; /* Adjust the height as needed */
+.logo img {
+    width: 200px;
+    height: auto;
+    margin-bottom: -20px;
 }
 
-.hosplogo img {
-    width: 130px; /* Adjust the width as needed */
-    height: auto; /* Maintain the aspect ratio */
+header {
+    background-color: rgb(255, 255, 255);
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 nav {
@@ -24,15 +35,16 @@ nav {
     display: flex; 
     justify-content: center; 
     margin: 20px 0; 
-    font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+
 
 .nav-section-a a {
     margin: 0 75px;
     text-decoration: none;
     color: rgba(13, 12, 12, 0.705);
-    font-style: Arial;
-    font-size: x-large;
 }
 
 .nav-section-b .dropdown {

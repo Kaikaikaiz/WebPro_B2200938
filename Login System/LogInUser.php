@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['email'] = $email;
         
         // Redirect to UserAccount.php
-        header("Location: UserAccount.php");
+        header("Location: ../My Account/UserProfile.php");
         exit();
     } else {
         echo "Invalid username or password";
@@ -65,42 +65,43 @@ $conn->close();
 
 </head>
 <body>
-    <header>
+<header>
         <figure class="logo">
-            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
+            <img src="../image/LogoSShospital.png" alt="Hospital Logo">
         </figure>
         <nav style="background-color:#FFC145 ;">
             <div class="nav-section-a">
-                <a href="#Booking Appointment">Booking Appointment</a>
-                <a href="#Doctor Profile">Doctor Profile</a>
-                <a href="#Common Disease">Common Disease</a>
+                <a href="../Booking Appointment/bookingform.html">Booking Appointment</a>
+                <a href="../Doctor Profile/doctors profile.html">Doctor Profile</a>
+                <a href="../Common Disease/common diseases.html">Common Disease</a>
             </div>
             <div class="nav-section-b">
-                <div class="dropdown">
-                    <div class="dropdown-word">Medical Service</div>
-                </div>
+                    <div class="dropdown-word">
+                        <a href="../Medical Service/medical services.html" class="dropdown-word">Medical Service</a>
+                    </div>
                 <div class="dropdown">
                     <div class="dropdown-word">About Us</div>
                     <ul class="dropdown-content">
-                        <li><a href="AboutUs_History.html">Hospital History</a></li>
-                        <li><a href="Mission&Vision.html">Vision & Mission</a></li>
-                        <li><a href="newsboardUser.html">News Board</a></li>
-                        <li><a href="survey.html">Survey</a></li>
+                        <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
+                        <li><a href="../About Us/">Vision & Mission</a></li>
+                        <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
+                        <li><a href="../Survey/survey.html">Survey</a></li>
                     </ul>
                 </div>
-                <div class="dropdown">
-                    <div class="dropdown-word"><a href="ContactUs.html">Contact Us</a></div>
+                <div class="dropdown-word">
+                    <a href="../Contact Us/ContactUs.html" class="dropdown-word">Contact Us</a>
                 </div>
                 <div class="dropdown">
                     <div class="dropdown-word">My Account</div>
                     <ul class="dropdown-content">
-                        <li><a href="MyAccountSignUp.php">Sign Up / Log In</a></li>
-                        <li><a href="UserAccount.php">My Profile</a></li>
+                        <li><a href="../Login System/LogInUser.php">Log In</a></li>
+                        <li><a href="../My Account/UserProfile.php">My Profile</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    
     <div class="title-band">
         <h1>Login / Sign Up</h1>
     </div>
@@ -129,6 +130,7 @@ $conn->close();
             <p>Forgot your password? <a href="ForgotPassword.html">Reset it here</a></p>
         </section>
     </main>
+    
     <footer>
         <div class="footerContainer">
             <div class="socialIcons">
@@ -139,15 +141,15 @@ $conn->close();
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="footerNav">
-                <ul><li><a href="">Home</a></li>
-                    <li><a href="">Medical Service</a></li>
-                    <li><a href="">Our Doctors</a></li>
-                    <li><a href="">Appointment Booking</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact Us</a></li>
+                <ul><li><a href="../Homepage/combine.html">Home</a></li>
+                    <li><a href="../Medical Service/medical services.html">Medical Service</a></li>
+                    <li><a href="../Doctor Profile/doctors profile.html">Our Doctors</a></li>
+                    <li><a href="../Booking Appointment/bookingform.html">Appointment Booking</a></li>
+                    <li><a href="../About Us/AboutUs_History.html">About Us</a></li>
+                    <li><a href="../Contact Us/ContactUs.html">Contact Us</a></li>
                 </ul>
             </div>
-           
+            
         </div>
         <div class="footerBottom">
             <p>Copyright &copy;2024  <span class="designer">SUNNY SMILE HOSPITAL</span></p>

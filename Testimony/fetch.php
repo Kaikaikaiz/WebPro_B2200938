@@ -19,22 +19,23 @@ if (!isset($_SESSION['username'])) {
     die("Username not set in session.");
 }
 
-// Upload to database
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_SESSION['username'];
-    $content = $_POST['content'];
+// Fetch testimonies
+$testimony_content = [];
+$testimony_query = "SELECT username, content FROM testimony WHERE username = ?";
+$stmt = $conn->prepare($testimony_query);
+$stmt->bind_param("s", $_SESSION['username']);
+$stmt->execute();
+$testimony_result = $stmt->get_result();
 
-    if (empty($username) || empty($content)) {
-        die("Username or content cannot be empty.");
-    }
-
-    $stmt = $conn->prepare("INSERT INTO testimony (username, content) VALUES (?, ?)");
-    $stmt->bind_param("ss", $username, $content);
-    if (!$stmt->execute()) {
-        die("Error: " . $stmt->error);
-    }
-    $stmt->close();
+while ($row = $testimony_result->fetch_assoc()) {
+    $testimony_content[] = [
+        'username' => $row['username'],
+        'content' => $row['content']
+    ];
 }
 
+echo json_encode(["testimony" => $testimony_content]);
+
+$stmt->close();
 $conn->close();
 ?>
