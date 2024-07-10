@@ -281,5 +281,7 @@ footer {
         margin: 4px;
     }
 }
- 
- 
+}
+ overflow-x: hidden;
+    width: 100%;
+}
