@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const postForm = document.getElementById('postForm');
     const postsContainer = document.getElementById('postsContainer');
+    const imageInput = document.getElementById('image');
     let editIndex = -1;
     let posts = [];
 
@@ -86,7 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
         editIndex = index;
         postForm.title.value = post.title;
         postForm.content.value = post.content;
-        // Handle image editing if needed
+        
+        // Create a new File object to display the filename
+        const imagePathParts = post.image.split('/');
+        const imageFilename = imagePathParts[imagePathParts.length - 1];
+        const file = new File([], imageFilename);
+        
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        imageInput.files = dataTransfer.files;
     }
 
     function deletePost(index) {
