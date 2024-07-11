@@ -26,7 +26,7 @@ $email = $_SESSION['email'];
         </figure>
         <nav style="background-color:#FFC145 ;">
             <div class="nav-section-a">
-                <a href="../Booking Appointment/bookingform.html">Booking Appointment</a>
+                <a href="../Booking Appointment/bookingform.php">Booking Appointment</a>
                 <a href="../Doctor Profile/doctors profile.html">Doctor Profile</a>
                 <a href="../Common Disease/common diseases.html">Common Disease</a>
             </div>
@@ -105,7 +105,7 @@ $email = $_SESSION['email'];
                 <ul><li><a href="../Homepage/combine.html">Home</a></li>
                     <li><a href="../Medical Service/medical services.html">Medical Service</a></li>
                     <li><a href="../Doctor Profile/doctors profile.html">Our Doctors</a></li>
-                    <li><a href="../Booking Appointment/bookingform.html">Appointment Booking</a></li>
+                    <li><a href="../Booking Appointment/bookingform.php">Appointment Booking</a></li>
                     <li><a href="../About Us/AboutUs_History.html">About Us</a></li>
                     <li><a href="../Contact Us/ContactUs.html">Contact Us</a></li>
                 </ul>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: ../Login System/LogInUser.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +24,14 @@
         </figure>
         <nav style="background-color:#FFC145 ;">
             <div class="nav-section-a">
-                <a href="../Booking Appointment/bookingform.html">Booking Appointment</a>
+                <a href="../Booking Appointment/bookingform.php">Booking Appointment</a>
                 <a href="../Doctor Profile/doctors profile.html">Doctor Profile</a>
                 <a href="../Common Disease/common diseases.html">Common Disease</a>
             </div>
             <div class="nav-section-b">
-                    <div class="dropdown-word">
-                        <a href="../Medical Service/medical services.html" class="dropdown-word">Medical Service</a>
-                    </div>
+                <div class="dropdown-word">
+                    <a href="../Medical Service/medical services.html" class="dropdown-word">Medical Service</a>
+                </div>
                 <div class="dropdown">
                     <div class="dropdown-word">About Us</div>
                     <ul class="dropdown-content">
@@ -50,7 +59,7 @@
         <section class="booking-form-section">
             <h1>Appointment Booking Form</h1>
             <div id="loginPrompt" style="display: none;">
-                <p>You need to <a href="LogInUser.php">log in</a> to book an appointment.</p>
+                <p>You need to <a href="../Login System/LogInUser.php">log in</a> to book an appointment.</p>
             </div>
             <form id="bookingForm">
                 <fieldset>
@@ -86,7 +95,6 @@
                         <option value="Growth and Development Assessment">Growth and Development Assessment</option>
                         <option value="Health Screenings">Health Screenings</option>
                     </select>
-                   
 
                     <label for="doctorInCharge">Doctor Incharge:</label>
                     <select id="doctorInCharge" name="doctorInCharge" required>
@@ -114,21 +122,43 @@
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="footerNav">
-                <ul><li><a href="../Homepage/combine.html">Home</a></li>
+                <ul>
+                    <li><a href="../Homepage/combine.html">Home</a></li>
                     <li><a href="../Medical Service/medical services.html">Medical Service</a></li>
                     <li><a href="../Doctor Profile/doctors profile.html">Our Doctors</a></li>
-                    <li><a href="../Booking Appointment/bookingform.html">Appointment Booking</a></li>
+                    <li><a href="../Booking Appointment/bookingform.php">Appointment Booking</a></li>
                     <li><a href="../About Us/AboutUs_History.html">About Us</a></li>
                     <li><a href="../Contact Us/ContactUs.html">Contact Us</a></li>
                 </ul>
             </div>
-            
         </div>
         <div class="footerBottom">
             <p>Copyright &copy;2024  <span class="designer">SUNNY SMILE HOSPITAL</span></p>
         </div>
     </footer>
 
-    <script src="bookingform.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('appointmentDate').setAttribute('min', today);
+
+    const isLoggedIn = JSON.parse(document.getElementById('isLoggedIn').textContent);
+
+    if (!isLoggedIn) {
+        document.getElementById('loginPrompt').style.display = 'block';
+        document.getElementById('bookingForm').style.display = 'none';
+    } else {
+        document.getElementById('loginPrompt').style.display = 'none';
+        document.getElementById('bookingForm').style.display = 'block';
+    }
+});
+
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Form submitted successfully!');
+});
+
+        
+    </script>
 </body>
 </html>
