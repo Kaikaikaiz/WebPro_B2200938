@@ -8,9 +8,6 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
     alert('Form submitted successfully!');
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('appointmentDate').setAttribute('min', today);
 
     // Check if the user is logged in
     const isLoggedIn = false; // Replace with actual logic to check if the user is logged in
