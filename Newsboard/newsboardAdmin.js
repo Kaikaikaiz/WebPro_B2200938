@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const postCard = createPostCard(post, index);
         postsContainer.appendChild(postCard);
     }
+    //add post item
 
     function createPostCard(post, index) {
         const card = document.createElement('div');
@@ -82,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return card;
     }
+    //create post card let the post item included
 
     function editPost(post, index) {
         editIndex = index;

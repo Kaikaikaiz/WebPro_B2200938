@@ -1,5 +1,3 @@
-// survey.js
-
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('surveyForm');
   const thankYouContainer = document.getElementById('thankYouContainer');
