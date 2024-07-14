@@ -144,7 +144,7 @@ $conn->close();
                    
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
-                   
+                    <br>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
  
@@ -161,6 +161,7 @@ $conn->close();
                     <input type="text" id="security-answer" name="security-answer" required>
  
                     <button type="submit">Sign Up</button>
+                    <a href="../My Account/UserProfile.php"></a>
                 </form>
             </div>
             <p>Already have an account? <a href="../Login System/LogInUser.php">Log in</a></p>
