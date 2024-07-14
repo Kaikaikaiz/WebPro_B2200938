@@ -102,29 +102,30 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 <a href="../Common Disease/common diseases.html">Common Disease</a>
             </div>
             <div class="nav-section-b">
-                <div class="dropdown">
-                    <a href="../Medical Service/medical services.html" class="dropdown-word">Medical Service</a>
-                <div class="dropdown">
-                    <div class="dropdown-word">About Us</div>
-                    <ul class="dropdown-content">
-                        <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
-                        <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
-                        <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
-                        <li><a href="../Survey/survey.html">Survey</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <a href="../Contact Us/ContactUs.html" class="dropdown-word">Contact Us</a>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-word">My Account</div>
-                    <ul class="dropdown-content">
-                        <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
-                        <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
-                        <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
-                    </ul>
-                </div>
+            <div class="dropdown">
+                <a href="../Medical Service/medical services.html" class="dropdown-word">Medical Service</a>
             </div>
+            <div class="dropdown">
+                <div class="dropdown-word">About Us</div>
+                <ul class="dropdown-content">
+                    <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
+                    <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
+                    <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
+                    <li><a href="../Survey/survey.html">Survey</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <a href="../Contact Us/ContactUs.html" class="dropdown-word">Contact Us</a>
+            </div>
+            <div class="dropdown">
+                <div class="dropdown-word">My Account</div>
+                <ul class="dropdown-content">
+                    <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
+                    <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
+                    <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
+                </ul>
+            </div>
+        </div>
         </nav>
     </header>
     <div class="title-band">
