@@ -157,7 +157,7 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
     </main>
     <!-- Logout Button -->
     <div style="text-align: right; padding: 40px;">
-        <form action="logout1.php" method="post">
+        <form action="../Login System/logout.php" method="post">
             <button type="submit" class="logout-button">Log Out</button>
         </form>
     </div>
