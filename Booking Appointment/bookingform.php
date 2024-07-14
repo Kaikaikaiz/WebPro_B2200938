@@ -14,7 +14,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+//Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get form data
     $childName = $_POST['childName'];
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $reason = $_POST['reason'];
 
     // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO appointments (childName, dob, parentName, contactNumber, appointmentDate, appointmentTime, medicalService, doctorInCharge, reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO bookings (childName, dob, parentName, contactNumber, appointmentDate, appointmentTime, medicalService, doctorInCharge, reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssssss", $childName, $dob, $parentName, $contactNumber, $appointmentDate, $appointmentTime, $medicalService, $doctorInCharge, $reason);
 
     // Execute the statement
