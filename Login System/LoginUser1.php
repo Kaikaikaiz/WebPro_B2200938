@@ -84,10 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <header>
         <figure class="logo">
-            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
+            <img src="hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
         <nav style="background-color:#FFC145 ;">
-            <div class="nav-section-a">
+        <div class="nav-section-a">
                 <a href="../Booking Appointment/bookingform.php">Booking Appointment</a>
                 <a href="../Doctor Profile/doctors profile.html">Doctor Profile</a>
                 <a href="../Common Disease/common diseases.html">Common Disease</a>
@@ -98,20 +98,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="dropdown">
                     <div class="dropdown-word">About Us</div>
                     <ul class="dropdown-content">
-                        <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
-                        <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
-                        <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
+                        <li><a href="../About Us/History.html">Hospital History</a></li>
+                        <li><a href="../About Us/Mission&Vision1.html">Vision & Mission</a></li>
+                        <li><a href="../Newsboard/newsboardUser1.html">News Board</a></li>
                         <li><a href="../Survey/survey.html">Survey</a></li>
                     </ul>
                 </div>
                 <div class="dropdown">
-                    <a href="../Contact Us/ContactUs.html" class="dropdown-word">Contact Us</a>
+                    <a href="../Contact Us/ContactUs1.html" class="dropdown-word">Contact Us</a>
                 </div>
                 <div class="dropdown">
                     <div class="dropdown-word">My Account</div>
                     <ul class="dropdown-content">
-                        <li><a href="../Login System/LogInUser.php">Log In</a></li>
-                        <li><a href="../My Account/UserProfile.php">My Profile</a></li>
+                        <li><a href="../Login System/LogInUser1.php">Log In</a></li>
+                        <li><a href="../My Account/AdminProfile.php">My Profile</a></li>
                     </ul>
                 </div>
             </div>
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p style="color: red;"><?php echo $error_message; ?></p>
             <?php endif; ?>
 
-            <form action="../Login System/LoginUser.php" method="POST">
+            <form action="../My Account/LoginUser.php" method="POST">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
@@ -139,8 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit">Login</button>
             </form>
 
-            <p>Don't have an account yet? <a href="../Login System/MyAccountSignUp.php">Sign Up</a></p>
-            <p>Forgot your password? <a href="../Login System/reset_password.php">Reset it here</a></p>
+            <p>Don't have an account yet? <a href="../Login System/MyAccountSignUp1.php">Sign Up</a></p>
+            <p>Forgot your password? <a href="../Login System/reset_password1.php">Reset it here</a></p>
         </section>
     </main>
     <footer>
@@ -157,8 +157,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li><a href="../Medical Service/medical services.html">Medical Service</a></li>
                     <li><a href="../Doctor Profile/doctors profile.html">Our Doctors</a></li>
                     <li><a href="../Booking Appointment/bookingform.php">Appointment Booking</a></li>
-                    <li><a href="../About Us/AboutUs_History.html">About Us</a></li>
-                    <li><a href="../Contact Us/ContactUs.html">Contact Us</a></li>
+                    <li><a href="../About Us/History.html">About Us</a></li>
+                    <li><a href="../Contact Us/ContactUs1.html">Contact Us</a></li>
                 </ul>
 
             </div>

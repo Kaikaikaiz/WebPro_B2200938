@@ -1,10 +1,6 @@
 <?php
 session_start();
  
-if (!isset($_SESSION['username']) || !isset($_SESSION['email'])) {
-    header("Location: LogInUser.php");
-    exit();
-}
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
 //$profile_image = $_SESSION['profile_image'];
@@ -29,7 +25,7 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="UserAccount.css"> <!-- Link your CSS file -->
+    <link rel="stylesheet" href="../My Account/UserAccount.css"> <!-- Link your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -38,7 +34,7 @@ if ($conn->connect_error) {
             <img src="hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
         <nav style="background-color:#FFC145 ;">
-        <div class="nav-section-a">
+            <div class="nav-section-a">
                 <a href="../Booking Appointment/bookingform.php">Booking Appointment</a>
                 <a href="../Doctor Profile/doctors profile.html">Doctor Profile</a>
                 <a href="../Common Disease/common diseases.html">Common Disease</a>
@@ -51,7 +47,7 @@ if ($conn->connect_error) {
                     <div class="dropdown-word">About Us</div>
                     <ul class="dropdown-content">
                         <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
-                        <li><a href="../About Us/Mission&Vision.php">Vision & Mission</a></li>
+                        <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
                         <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
                         <li><a href="../Survey/survey.html">Survey</a></li>
                     </ul>
@@ -62,8 +58,8 @@ if ($conn->connect_error) {
                 <div class="dropdown">
                     <div class="dropdown-word">My Account</div>
                     <ul class="dropdown-content">
-                        <li><a href="MyAccountSignUp.php">Sign Up / Log In</a></li>
-                        <li><a href="UserAccount.php">My Profile</a></li>
+                        <li><a href="../Login System/MyAccountSignUp.php">Sign Up / Log In</a></li>
+                        <li><a href="../My Account/UserAccount.php">My Profile</a></li>
                     </ul>
                 </div>
             </div>
@@ -146,7 +142,7 @@ if ($conn->connect_error) {
                     </div>
                 </div>
             </ul>
-            <button class="testimony-button" onclick="window.location.href='Testimony/testimony.php'">View Patient Testimonies</button>
+            <button class="testimony-button" onclick="window.location.href='../Testimony/testimony.php'">View Patient Testimonies</button>
         </section>
     </main>
     <!-- Logout Button -->
@@ -191,7 +187,7 @@ if ($conn->connect_error) {
                 <?php if (!isset($_SESSION['username']) || !isset($_SESSION['email'])): ?>
                     event.preventDefault();
                     alert('Login first');
-                    window.location.href = 'MyAccountSignUp.php';
+                    window.location.href = '../Login System/MyAccountSignUp.php';
                 <?php endif; ?>
             });
         });

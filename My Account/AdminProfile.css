@@ -1,16 +1,24 @@
+/* Resetting default styles */
 body, h1, p, label, input, button, ul, li, figure {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: navajowhite; /* French Grey */
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    background-color:navajowhite; /* French Grey */
     color: #B8B8D1; /* Ultra Violet */
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     width: 100%;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+    /*margin-bottom: -20px;*/
 }
 
 header {
@@ -20,60 +28,61 @@ header {
     flex-direction: column;
     align-items: center;
 }
-
-.logo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+ 
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
 }
-
-.logo img {
-    width: 200px;
-    height: auto;
-    margin-bottom: -20px;
+ 
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    position: relative;
 }
-
+ 
 nav {
     text-align: center;
     width: 100%;
     box-shadow: 0 6px 4px rgba(111, 106, 116, 0.548);
 }
-
+ 
 .nav-section-a {
-    display: flex; 
-    justify-content: center; 
-    margin: 20px 0; 
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
 .nav-section-b {
     
-    justify-content: center; 
+    justify-content: center;
     margin: 20px 0;
 }
-
-
+ 
+ 
+ 
+ 
+ 
 .nav-section-a a {
     margin: 0 75px;
     text-decoration: none;
     color: rgba(13, 12, 12, 0.705);
-    font-size: 24px;
 }
-
+ 
 .nav-section-b .dropdown {
     margin: 0 15px; /* Adjust this value for more or less spacing */
 }
-
+ 
 .nav-section-a a:hover, .nav-section-b .dropdown-word:hover {
     text-decoration: underline;
 }
-
+ 
 /* Style the dropdown container */
 .dropdown {
     list-style-type: none;
     position: relative;
     display: inline-block;
 }
-
+ 
 /* Style the dropdown word */
 .dropdown-word {
     color: #ffffff;
@@ -82,12 +91,7 @@ nav {
     cursor: pointer;
     text-decoration: none; /* Ensure links don't have underline by default */
 }
-/*added this line 追加8*/
-.dropdown-word a {
-    text-decoration: none;
-    color: inherit;
-}
-
+ 
 /* Style the dropdown content */
 .dropdown-content {
     display: none;
@@ -98,8 +102,9 @@ nav {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    z-index: 4;
 }
-
+ 
 /* Style the links inside the dropdown */
 .dropdown-content li a {
     color: #5B5F97;
@@ -107,87 +112,123 @@ nav {
     text-decoration: none;
     display: block;
 }
-
+ 
 /* Change color of dropdown links on hover */
 .dropdown-content li a:hover {
     background-color: #b8b8d188;
 }
-
+ 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+ 
 /* Change the color of the dropdown word on hover */
 .dropdown:hover .dropdown-word {
     color: #948467;
 }
 
-/* Main Section Styles */
-.title-band{
-    margin-left: 20px;
-    margin-top: 15px;
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensure the main content is above the background */
 }
 .title-band h1{
+    margin-top: 15px;
+    margin-left: 15px;
     color: #5B5F97;
-}
-main {
-    padding: 20px;
 }
 
-.signup-form {
-    background-color: #fff;
-    color: #5B5F97;
+.profile {
+    background-color: #FFFFFB; /* Baby Powder */
     padding: 20px;
-    max-width: 400px;
-    margin: 0 auto;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    width: 100%;
+    text-align: left;
+    height: 100%;
 }
 
-.signup-form h2 {
-    text-align: center;
-    color: #333;
+.profile h2 {
+    text-align: left;
+    color: #5B5F97; /* Ultra Violet */
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Make the title uppercase */
+}
+.profile p{
+    margin-left: 25px;
 }
 
-.signup-form form {
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-details h3{
+    color: #5B5F97; /* Ultra Violet */
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+.profile-details p {
+    color: #FFAB73; /* Orange */
+    font-size: 0.9em; /* Smaller font size */
+}
+.newsboard-button{
+    font-size: large;
+}
+
+.admin-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF6B6C;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+    background-color: #D45A5C;
+}
+.profile-info {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.signup-form label {
-    margin-bottom: 10px;
-    font-weight: bold;
+.profile-image {
+    position: relative;
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    border-radius: 50%;
+    overflow: hidden;
 }
 
-.signup-form input[type="text"],
-.signup-form input[type="password"],
-.signup-form input[type="email"],
-.signup-form select {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+#profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.signup-form button {
-    padding: 10px;
-    background-color: #FFC145;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
+#imageUpload {
+    margin-top: 10px; /* Adjust spacing as needed */
+    width: 150px; /* Adjust width as needed */
 }
 
-.signup-form button:hover {
-    background-color: #e6a13a;
-}
-
-.signup-form p {
-    text-align: center;
-    color: #B8B8D1;
-}
 
 /*Footer*/
 footer {

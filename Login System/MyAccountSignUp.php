@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $email;
  
             // Redirect to UserProfile.php
-            header("Location: UserProfile.php");
+            header("Location: ../My Account/UserProfile.php");
             exit();
         } else {
             $error = 'Error: ' . $stmt->error;
@@ -86,14 +86,14 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="MyAccountSignUp.css"> <!-- Link your CSS file -->
+    <link rel="stylesheet" href="../Login System/MyAccountSignUp.css"> <!-- Link your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <figure class="logo">
-            <img src="hospitalLogo.jpeg" alt="Hospital Logo">
+            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
         <nav style="background-color:#FFC145;">
             <div class="nav-section-a">
@@ -109,7 +109,7 @@ $conn->close();
                     <div class="dropdown-word">About Us</div>
                     <ul class="dropdown-content">
                         <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
-                        <li><a href="../About Us/Mission&Vision.php">Vision & Mission</a></li>
+                        <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
                         <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
                         <li><a href="../Survey/survey.html">Survey</a></li>
                     </ul>
@@ -120,8 +120,8 @@ $conn->close();
                 <div class="dropdown">
                     <div class="dropdown-word">My Account</div>
                     <ul class="dropdown-content">
-                        <li><a href="MyAccountSignUp.php">Log In</a></li>
-                        <li><a href="UserAccount.php">My Profile</a></li>
+                        <li><a href="../Login System/LogInUser.php">Log In</a></li>
+                        <li><a href="../My Account/UserProfile.php">My Profile</a></li>
                     </ul>
                 </div>
             </div>
@@ -139,7 +139,6 @@ $conn->close();
             }
             ?>
             <div id="User" class="tab-content active">
-                <form id="user-form" action="MyAccountSignUp.php" method="post">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
                    
@@ -164,7 +163,7 @@ $conn->close();
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
-            <p>Already have an account? <a href="LogInUser.php">Log in</a></p>
+            <p>Already have an account? <a href="../Login System/LogInUser.php">Log in</a></p>
         </section>
     </main>
     <footer>
