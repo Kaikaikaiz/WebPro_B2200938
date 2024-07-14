@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $security_question = $_POST['security-question'];
     $security_answer = $_POST['security-answer'];
  
-    // Check if the email already exists　emailかぶりチェックはここだよ～～～～
+    // Check if the email already exists　email
     $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -89,15 +89,9 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../Login System/MyAccountSignUp.css"> <!-- Link your CSS file -->
+    <link rel="stylesheet" href="MyAccountSignUp.css"> <!-- Link your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        .hidden{
-            display:none;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -148,46 +142,46 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 echo '<p style="color:red;">' . $error . '</p>';
             }
             ?>
-            <div id="User" class="tab-content active">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                   
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    <br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
- 
-                    <label for="security-question">Security Question:</label>
-                    <select id="security-question" name="security-question" required>
-                        <option value="">Select a question...</option>
-                        <option value="pet">What was the name of your first pet?</option>
-                        <option value="mother-maiden">What is your mother's maiden name?</option>
-                        <option value="first-car">What was the make and model of your first car?</option>
-                        <option value="school">What was the name of your elementary school?</option>
-                    </select>
- 
-                    <label for="security-answer">Answer:</label>
-                    <input type="text" id="security-answer" name="security-answer" required>
- 
-                    <button type="submit">Sign Up</button>
-                    <a href="../My Account/UserProfile.php"></a>
-                </form>
-            </div>
+            <form id="user-form" action="UserProfile.php" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="security-question">Security Question:</label>
+                <select id="security-question" name="security-question" required>
+                    <option value="">Select a question...</option>
+                    <option value="pet">What was the name of your first pet?</option>
+                    <option value="mother-maiden">What is your mother's maiden name?</option>
+                    <option value="first-car">What was the make and model of your first car?</option>
+                    <option value="school">What was the name of your elementary school?</option>
+                </select>
+                <br>
+                <label for="security-answer">Answer:</label>
+                <input type="text" id="security-answer" name="security-answer" required>
+                <br>
+                <button type="submit">Sign Up</button>
+                <a href="../My Account/UserProfile.php"></a>
+            </form>
             <p>Already have an account? <a href="../Login System/LogInUser.php">Log in</a></p>
         </section>
     </main>
     <footer>
         <div class="footerContainer">
             <div class="socialIcons">
-                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://x.com/?lang=zh"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://support.google.com/answer/2451065?hl=en"><i class="fa-brands fa-google-plus"></i></a>
-                <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="footerNav">
-                <ul><li><a href="../Homepage/combine.html">Home</a></li>
+                <ul>
+                    <li><a href="../Homepage/combine.html">Home</a></li>
                     <li><a href="../Medical Service/medical services.html">Medical Service</a></li>
                     <li><a href="../Doctor Profile/doctors profile.html">Our Doctors</a></li>
                     <li><a href="../Booking Appointment/bookingform.php">Appointment Booking</a></li>
@@ -201,21 +195,29 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
         </div>
     </footer>
     <script>
-    function submitForm() {
+    function submitForm(event) {
+        event.preventDefault(); // Prevent the default form submission
+
         // Get form values
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const email = document.getElementById('email').value;
         const securityQuestion = document.getElementById('security-question').value;
         const securityAnswer = document.getElementById('security-answer').value;
- 
+
+        console.log("Username:", username);
+        console.log("Password:", password);
+        console.log("Email:", email);
+        console.log("Security Question:", securityQuestion);
+        console.log("Security Answer:", securityAnswer);
+
         // Password validation
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!passwordPattern.test(password)) {
             alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.');
             return;
         }
- 
+
         // Check if all fields are filled
         if (username && password && email && securityQuestion && securityAnswer) {
             // Save profile data to localStorage
@@ -224,17 +226,16 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 email: email
             };
             localStorage.setItem('profileData', JSON.stringify(profileData));
- 
-            // The form will automatically submit because of the action and method attributes
+
+            // Submit the form
+            document.getElementById('user-form').submit();
         } else {
             alert('Please fill in all the required fields.');
         }
     }
- 
+
     // Attach the submitForm function to the form submit event
     document.getElementById('user-form').addEventListener('submit', submitForm);
     </script>
 </body>
 </html>
- 
- 
