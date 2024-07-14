@@ -147,6 +147,10 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 window.history.replaceState(null, null, window.location.href);
             }
         }
+
+        function redirectToNewsBoard() {
+            window.location.href = '../Newsboard/newsboardAdmin.html';
+        }
     </script>
 </body>
 </html>
