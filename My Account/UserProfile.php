@@ -30,6 +30,12 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
     <title>User Profile</title>
     <link rel="stylesheet" href="../My Account/UserAccount.css"> <!-- Link your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .hidden{
+            display:none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -61,8 +67,9 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 <div class="dropdown">
                     <div class="dropdown-word">My Account</div>
                     <ul class="dropdown-content">
-                        <li><a href="../Login System/MyAccountSignUp.php">Sign Up / Log In</a></li>
-                        <li><a href="../My Account/UserAccount.php">My Profile</a></li>
+                        <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
+                        <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
+                        <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
                     </ul>
                 </div>
             </div>

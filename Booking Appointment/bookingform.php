@@ -5,7 +5,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header('Location: ../Login System/LogInUser.php');
     exit;
 }
-
+$loggedIn = isset($_SESSION['username']);
+$isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Appointment Booking Form</title>
+
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -48,8 +55,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <div class="dropdown">
                     <div class="dropdown-word">My Account</div>
                     <ul class="dropdown-content">
-                        <li><a href="../Login System/LogInUser.php">Log In</a></li>
-                        <li><a href="../My Account/UserProfile.php">My Profile</a></li>
+                        <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
+                        <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
+                        <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
                     </ul>
                 </div>
             </div>

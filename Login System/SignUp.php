@@ -89,6 +89,10 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
         .reset-message {
             color: red;
         }
+
+        .hidden{
+            display:none;
+        }
     </style>
 </head>
 <body>
@@ -121,8 +125,9 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
             <div class="dropdown">
                 <div class="dropdown-word">My Account</div>
                 <ul class="dropdown-content">
-                    <li><a href="../Login System/LogInUser1.php">Log In</a></li>
-                    <li><a href="../My Account/AdminProfile.php">My Profile</a></li>
+                    <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
+                    <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
+                    <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
                 </ul>
             </div>
         </div>

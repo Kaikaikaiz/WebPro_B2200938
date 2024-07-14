@@ -79,7 +79,7 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
             <div class="profile-info">
                 <div class="profile-image">
                     <!-- Display selected image here -->
-                    <img id="profileImage" src="../My Account/AdminProfile.jpeg" alt="Profile Image">
+                    <img id="profileImage" src="../image/AdminProfile.jpeg" alt="Profile Image">
                 </div>
                 <div class="profile-details">
                     <h3>Admin</h3>
@@ -92,7 +92,7 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
         </section>
     </main>
     <div style="text-align: right; padding: 40px;">
-        <form action="../Login System/logout1.php" method="post">
+        <form action="../Login System/logout.php" method="post">
             <button type="submit" class="logout-button">Log Out</button>
         </form>
     </div>

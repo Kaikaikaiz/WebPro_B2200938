@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../My Account/MyAccountSignUp.php");
+header("Location: ../Login System/LogInUser.php");
 exit();
 ?>
