@@ -114,7 +114,7 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 <div class="dropdown-word">About Us</div>
                 <ul class="dropdown-content">
                     <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
-                    <li><a href="../About Us/Mission&Vision">Vision & Mission</a></li>
+                    <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
                     <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
                     <li><a href="../Survey/survey.html">Survey</a></li>
                 </ul>

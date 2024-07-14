@@ -50,14 +50,14 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
             <div class="dropdown">
                 <div class="dropdown-word">About Us</div>
                 <ul class="dropdown-content">
-                    <li><a href="../About Us/History.html">Hospital History</a></li>
-                    <li><a href="../About Us/Mission&Visio1.html">Vision & Mission</a></li>
-                    <li><a href="../Newsboard/newsboardUser1.html">News Board</a></li>
+                    <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
+                    <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
+                    <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
                     <li><a href="../Survey/survey.html">Survey</a></li>
                 </ul>
             </div>
             <div class="dropdown">
-                <a href="../Contact Us/ContactUs1.html" class="dropdown-word">Contact Us</a>
+                <a href="../Contact Us/ContactUs.html" class="dropdown-word">Contact Us</a>
             </div>
             <div class="dropdown">
                 <div class="dropdown-word">My Account</div>
