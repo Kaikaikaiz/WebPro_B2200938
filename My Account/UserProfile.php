@@ -155,11 +155,11 @@ if ($conn->connect_error) {
     <footer>
         <div class="footerContainer">
             <div class="socialIcons">
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-google-plus"></i></a>
-                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/?lang=zh"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://support.google.com/answer/2451065?hl=en"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="footerNav">
                 <ul><li><a href="../Homepage/combine.html">Home</a></li>
@@ -172,7 +172,7 @@ if ($conn->connect_error) {
             </div>
         </div>
         <div class="footerBottom">
-            <p>Copyright &copy;2024  <span class="designer">SUNNY SMILE HOSPITAL</span></p>
+            <p>Copyright &copy;2024 <span class="designer">SUNNY SMILE HOSPITAL</span></p>
         </div>
     </footer>
  
