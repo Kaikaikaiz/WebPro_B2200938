@@ -1,4 +1,11 @@
+<?php
+session_start();
+ob_start(); // Start output buffering
 
+// Determine the login status and role
+$loggedIn = isset($_SESSION['username']);
+$isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +26,9 @@
         }
         .newsboard-button:hover {
             background-color: #FF8B8C;
+        }
+        .hidden{
+            display:none;
         }
     </style>
 </head>
@@ -52,8 +62,9 @@
             <div class="dropdown">
                 <div class="dropdown-word">My Account</div>
                 <ul class="dropdown-content">
-                    <li><a href="../Login System/LogInUser1.php">Sign Up / Log In</a></li>
-                    <li><a href="../My Account/AdminProfile.php">My Profile</a></li>
+                    <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
+                    <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
+                    <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
                 </ul>
             </div>
         </div>
@@ -68,7 +79,7 @@
             <div class="profile-info">
                 <div class="profile-image">
                     <!-- Display selected image here -->
-                    <img id="profileImage" src="AdminProfile.jpeg" alt="Profile Image">
+                    <img id="profileImage" src="../My Account/AdminProfile.jpeg" alt="Profile Image">
                 </div>
                 <div class="profile-details">
                     <h3>Admin</h3>
@@ -78,36 +89,34 @@
             
             <!-- "View news board" button -->
             <button class="newsboard-button" onclick="redirectToNewsBoard()">Manage Newsboard</button>
-            
         </section>
     </main>
     <div style="text-align: right; padding: 40px;">
-        <form action="logout1.php" method="post">
+        <form action="../Login System/logout1.php" method="post">
             <button type="submit" class="logout-button">Log Out</button>
         </form>
     </div>
     <footer>
         <div class="footerContainer">
             <div class="socialIcons">
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-google-plus"></i></a>
-                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/?lang=zh"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://support.google.com/answer/2451065?hl=en"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="footerNav">
                 <ul><li><a href="../Homepage/combine.html">Home</a></li>
                     <li><a href="../Medical Service/medical services.html">Medical Service</a></li>
                     <li><a href="../Doctor Profile/doctors profile.html">Our Doctors</a></li>
                     <li><a href="../Booking Appointment/bookingform.php">Appointment Booking</a></li>
-                    <li><a href="../About Us/History.html">About Us</a></li>
-                    <li><a href="../Contact Us/ContactUs1.html">Contact Us</a></li>
+                    <li><a href="../About Us/AboutUs_History.html">About Us</a></li>
+                    <li><a href="../Contact Us/ContactUs.html">Contact Us</a></li>
                 </ul>
             </div>
-        
         </div>
         <div class="footerBottom">
-            <p>Copyright &copy;2024  <span class="designer">SUNNY SMILE HOSPITAL</span></p>
+            <p>Copyright &copy;2024 <span class="designer">SUNNY SMILE HOSPITAL</span></p>
         </div>
     </footer>
     
@@ -124,9 +133,7 @@
 
             reader.readAsDataURL(input.files[0]);
         }
-        function redirectToNewsBoard() {
-            window.location.href = '../Newsboard/newsboardAdmin.html';
-        }
+        
         // Logout function
         document.getElementById('logout').addEventListener('click', function(e) {
             e.preventDefault(); // Prevent default link behavior

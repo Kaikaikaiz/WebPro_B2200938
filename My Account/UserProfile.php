@@ -17,6 +17,9 @@ $conn = new mysqli($servername, $db_username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+$loggedIn = isset($_SESSION['username']);
+$isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
 ?>
  
 <!DOCTYPE html>

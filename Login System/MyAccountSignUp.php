@@ -79,6 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
 // Close the connection
 $conn->close();
+
+$loggedIn = isset($_SESSION['username']);
+$isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
 ?>
 <!DOCTYPE html>
 <html lang="en">
