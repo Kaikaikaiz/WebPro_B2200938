@@ -40,7 +40,7 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
 <body>
     <header>
         <figure class="logo">
-            <img src="hospitalLogo.jpeg" alt="Hospital Logo">
+            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
         <nav style="background-color:#FFC145 ;">
             <div class="nav-section-a">
@@ -102,7 +102,8 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
             $stmt->close();
             ?>
         </div>
-                <form action="upload_profile_image.php" method="post" enctype="multipart/form-data">
+              <form action="../My Account/upload_profile_image.php" method="post" enctype="multipart/form-data">
+
                     <input type="file" name="profile_image" accept="image/*">
                     <button type="submit">Upload Image</button>
                 </form>
