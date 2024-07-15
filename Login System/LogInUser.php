@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Set session variables for regular user
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
+            $_SESSION['userid'] =$id;
 
             // Redirect to UserAccount.php
             header("Location: ../My Account/UserProfile.php");

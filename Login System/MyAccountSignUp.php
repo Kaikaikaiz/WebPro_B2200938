@@ -29,7 +29,7 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
     profile_image VARCHAR(255),
     drName VARCHAR(50),
     purpose VARCHAR(100),
-    date date,
+    date DATE,
     UNIQUE (email)
 )";
  
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $security_question = $_POST['security-question'];
     $security_answer = $_POST['security-answer'];
  
-    // Check if the email already exists　email
+    // Check if the email already exists
     $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -79,57 +79,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
 // Close the connection
 $conn->close();
-
+ 
 $loggedIn = isset($_SESSION['username']);
 $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
 ?>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../Login System/MyAccountSignUp.css"> <!-- Link your CSS file -->
+    <link rel="stylesheet" href="../Login System/MyAccountSignUp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <figure class="logo">
-            <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
-        </figure>
-        <nav style="background-color:#FFC145;">
-            <div class="nav-section-a">
-                <a href="../Booking Appointment/bookingform.php">Booking Appointment</a>
-                <a href="../Doctor Profile/doctors profile.html">Doctor Profile</a>
-                <a href="../Common Disease/common diseases.html">Common Disease</a>
-            </div>
-            <div class="nav-section-b">
-                <div class="dropdown">
-                    <a href="../Medical Service/medical services.html" class="dropdown-word">Medical Service</a>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-word">About Us</div>
-                    <ul class="dropdown-content">
-                        <li><a href="../About Us/AboutUs_History.html">Hospital History</a></li>
-                        <li><a href="../About Us/Mission&Vision.html">Vision & Mission</a></li>
-                        <li><a href="../Newsboard/newsboardUser.html">News Board</a></li>
-                        <li><a href="../Survey/survey.html">Survey</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <a href="../Contact Us/ContactUs.html" class="dropdown-word">Contact Us</a>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-word">My Account</div>
-                    <ul class="dropdown-content">
-                        <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
-                        <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
-                        <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <!-- ...header content... -->
     </header>
     <div class="title-band">
         <h1>Login / Sign Up</h1>
@@ -137,12 +104,10 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
     <main>
         <section class="signup-form">
             <h2>Sign Up</h2>
-            <?php
-            if ($error) {
-                echo '<p style="color:red;">' . $error . '</p>';
-            }
-            ?>
-            <form id="user-form" action="UserProfile.php" method="POST">
+            <?php if ($error): ?>
+                <p style="color:red;"><?php echo $error; ?></p>
+            <?php endif; ?>
+            <form id="user-form" action="" method="POST"> <!-- Ensure the form action is correct -->
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <br>
@@ -165,7 +130,6 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 <input type="text" id="security-answer" name="security-answer" required>
                 <br>
                 <button type="submit">Sign Up</button>
-                <a href="../My Account/UserProfile.php"></a>
             </form>
             <p>Already have an account? <a href="../Login System/LogInUser.php">Log in</a></p>
         </section>
@@ -195,47 +159,47 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
         </div>
     </footer>
     <script>
-    function submitForm(event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Get form values
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const email = document.getElementById('email').value;
-        const securityQuestion = document.getElementById('security-question').value;
-        const securityAnswer = document.getElementById('security-answer').value;
-
-        console.log("Username:", username);
-        console.log("Password:", password);
-        console.log("Email:", email);
-        console.log("Security Question:", securityQuestion);
-        console.log("Security Answer:", securityAnswer);
-
-        // Password validation
-        const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        if (!passwordPattern.test(password)) {
-            alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.');
-            return;
+        function submitForm(event) {
+            event.preventDefault();
+ 
+            // Get form values
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const securityQuestion = document.getElementById('security-question').value;
+            const securityAnswer = document.getElementById('security-answer').value;
+ 
+            console.log("Username:", username);
+            console.log("Password:", password);
+            console.log("Email:", email);
+            console.log("Security Question:", securityQuestion);
+            console.log("Security Answer:", securityAnswer);
+ 
+            // Password validation
+            const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.');
+                return;
+            }
+ 
+            // Check if all fields are filled
+            if (username && password && email && securityQuestion && securityAnswer) {
+                // Save profile data to localStorage
+                const profileData = {
+                    username: username,
+                    email: email
+                };
+                localStorage.setItem('profileData', JSON.stringify(profileData));
+ 
+                // Submit the form
+                document.getElementById('user-form').submit();
+            } else {
+                alert('Please fill in all the required fields.');
+            }
         }
-
-        // Check if all fields are filled
-        if (username && password && email && securityQuestion && securityAnswer) {
-            // Save profile data to localStorage
-            const profileData = {
-                username: username,
-                email: email
-            };
-            localStorage.setItem('profileData', JSON.stringify(profileData));
-
-            // Submit the form
-            document.getElementById('user-form').submit();
-        } else {
-            alert('Please fill in all the required fields.');
-        }
-    }
-
-    // Attach the submitForm function to the form submit event
-    document.getElementById('user-form').addEventListener('submit', submitForm);
+ 
+        // Attach the submitForm function to the form submit event
+        document.getElementById('user-form').addEventListener('submit', submitForm);
     </script>
 </body>
 </html>

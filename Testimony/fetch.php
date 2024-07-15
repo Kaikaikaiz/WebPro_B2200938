@@ -21,9 +21,8 @@ if (!isset($_SESSION['username'])) {
 
 // Fetch testimonies
 $testimony_content = [];
-$testimony_query = "SELECT username, content FROM testimony WHERE username = ?";
+$testimony_query = "SELECT username, content FROM testimony";
 $stmt = $conn->prepare($testimony_query);
-$stmt->bind_param("s", $_SESSION['username']);
 $stmt->execute();
 $testimony_result = $stmt->get_result();
 

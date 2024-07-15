@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+if (!isset($_SESSION['username'])) {
     header('Location: ../Login System/LogInUser.php');
     exit;
 }
@@ -70,7 +70,7 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
             <div id="loginPrompt" style="display: none;">
                 <p>You need to <a href="../Login System/LogInUser.php">log in</a> to book an appointment.</p>
             </div>
-            <form id="bookingForm" action="bookingform.php" method="POST">
+            <form id="bookingForm" action="bookingDatabase.php" method="POST">
                 <fieldset>
                     <legend>Patient Information</legend>
                     <label for="childName">Child's Full Name:</label>

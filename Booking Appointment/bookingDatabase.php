@@ -18,6 +18,7 @@ if ($conn->connect_error) {
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get form data
+    $userid = $_SESSION['userid'];
     $childName = $_POST['childName'];
     $dob = $_POST['dob'];
     $parentName = $_POST['parentName'];
@@ -29,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $reason = $_POST['reason'];
 
     // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO bookings (childName, dob, parentName, contactNumber, appointmentDate, appointmentTime, medicalService, doctorInCharge, reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssss", $childName, $dob, $parentName, $contactNumber, $appointmentDate, $appointmentTime, $medicalService, $doctorInCharge, $reason);
+    $stmt = $conn->prepare("INSERT INTO bookings (user_id, childName, dob, parentName, contactNumber, appointmentDate, appointmentTime, medicalService, doctorInCharge, purpose) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssssss", $userid, $childName, $dob, $parentName, $contactNumber, $appointmentDate, $appointmentTime, $medicalService, $doctorInCharge, $reason);
 
     // Execute the statement
     if ($stmt->execute()) {
         // Redirect to user profile page after successful booking
-        header("Location: UserProfile.php");
+        header("Location: ../My Account/UserProfile.php");
         exit();
     } else {
         echo "Error: " . $stmt->error;

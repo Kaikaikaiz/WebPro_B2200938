@@ -149,7 +149,6 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
         <?php else: ?>
             <h2>Enter New Password</h2>
             <form method="POST" onsubmit="return validatePassword()">
-                <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <label for="security-question">Security Question:</label>

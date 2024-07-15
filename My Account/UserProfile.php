@@ -3,11 +3,10 @@ session_start();
  
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
-//$profile_image = $_SESSION['profile_image'];
  
 // Database connection
 $servername = "localhost";
-$db_username = "root"; // Renamed from $username to $db_username
+$db_username = "root";
 $password = "";
 $dbname = "sunnysmile";
  
@@ -17,7 +16,7 @@ $conn = new mysqli($servername, $db_username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+ 
 $loggedIn = isset($_SESSION['username']);
 $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
 ?>
@@ -28,12 +27,12 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="../My Account/UserAccount.css"> <!-- Link your CSS file -->
+    <link rel="stylesheet" href="../My Account/UserAccount.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+ 
     <style>
-        .hidden{
-            display:none;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -42,7 +41,7 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
         <figure class="logo">
             <img src="../image/hospitalLogo.jpeg" alt="Hospital Logo">
         </figure>
-        <nav style="background-color:#FFC145 ;">
+        <nav style="background-color:#FFC145;">
             <div class="nav-section-a">
                 <a href="../Booking Appointment/bookingform.php">Booking Appointment</a>
                 <a href="../Doctor Profile/doctors profile.html">Doctor Profile</a>
@@ -67,9 +66,9 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                 <div class="dropdown">
                     <div class="dropdown-word">My Account</div>
                     <ul class="dropdown-content">
-                        <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login" >Log In</a></li>
+                        <li class="<?php echo $loggedIn ? 'hidden' : ''; ?>"><a href="../Login System/LogInUser.php" id="login">Log In</a></li>
                         <li class="<?php echo $loggedIn && !$isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/UserProfile.php" id="profile">My Profile</a></li>
-                        <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin" >Admin</a></li>
+                        <li class="<?php echo $loggedIn && $isAdmin ? '' : 'hidden'; ?>"><a href="../My Account/AdminProfile.php" id="admin">Admin</a></li>
                     </ul>
                 </div>
             </div>
@@ -82,32 +81,28 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
     <main>
         <section class="profile">
             <div class="profile-info">
-            <div class="profile-image">
-            <?php
-    // Check if user has uploaded a profile image
-            $sql = "SELECT profile_image FROM users WHERE username=?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $stmt->store_result();
+                <div class="profile-image">
+                    <?php
+                    $sql = "SELECT profile_image FROM users WHERE username=?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $username);
+                    $stmt->execute();
+                    $stmt->bind_result($profile_image);
+                    $stmt->fetch();
  
-            if ($stmt->num_rows > 0) {
-                $stmt->bind_result($profile_image);
-                $stmt->fetch();
-                echo '<img id="profileImage" src="' . htmlspecialchars($profile_image) . '" alt="Profile Image">';
-            } else {
-                echo '<img id="profileImage" src="default_profile_image.jpg" alt="Profile Image">';
-            }
+                    if ($profile_image) {
+                        echo '<img id="profileImage" src="' . htmlspecialchars($profile_image) . '" alt="Profile Image">';
+                    } else {
+                        echo '<img id="profileImage" src="default_profile_image.jpg" alt="Profile Image">';
+                    }
  
-            $stmt->close();
-            ?>
-        </div>
-              <form action="../My Account/upload_profile_image.php" method="post" enctype="multipart/form-data">
-
-                    <input type="file" name="profile_image" accept="image/*">
+                    $stmt->close();
+                    ?>
+                </div>
+                <form action="upload_profile_image.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="profile_image" accept="image/*" onchange="previewImage(event)">
                     <button type="submit">Upload Image</button>
                 </form>
- 
                 <div class="profile-details">
                     <h3 id="username">Username: <?php echo htmlspecialchars($username); ?></h3>
                     <p id="email">Email: <?php echo htmlspecialchars($email); ?></p>
@@ -119,44 +114,46 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
                     <div class="history">
                         <h2>Medical History</h2>
                         <ul id="medical-history-list">
-                            <?php
-                            $sql = "SELECT drName, purpose, date FROM users WHERE username=?";
-                            $stmt = $conn->prepare($sql);
+                        <?php
+                        $userid = $_SESSION['userid'];
 
-                            if ($stmt === false) {
-                                die("Error preparing statement: " . $conn->error);
+                        $sql = "SELECT doctorInCharge, medicalService, appointmentDate FROM bookings WHERE user_id=?";
+                        $stmt = $conn->prepare($sql);
+
+                        if ($stmt === false) {
+                            die("Error preparing statement: " . $conn->error);
+                        }
+
+                        $stmt->bind_param("i", $userid);
+
+                        if ($stmt->execute() === false) {
+                            die("Error executing statement: " . $stmt->error);
+                        }
+
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $drName = $row['doctorInCharge'];
+                                $purpose = $row['medicalService'];
+                                $date = $row['appointmentDate'];
+
+                                echo '<li>On ' . htmlspecialchars($date) . ', booked ' . htmlspecialchars($drName) . ' for ' . htmlspecialchars($purpose) . '</li>';
                             }
+                        } else {
+                            echo '<p id="no-history-message">No history available</p>';
+                        }
 
-                            $stmt->bind_param("s", $username);
-                            if ($stmt->execute() === false) {
-                                die("Error executing statement: " . $stmt->error);
-                            }
-
-                            $result = $stmt->get_result();
-
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    $drName = isset($row['drName']) ? htmlspecialchars($row['drName']) : "----";
-                                    $purpose = isset($row['purpose']) ? htmlspecialchars($row['purpose']) : "----";
-                                    $date = isset($row['date']) ? htmlspecialchars($row['date']) : "---";
-
-                                    echo '<li>On ' . $date . ', booked ' . $drName . ' for ' . $purpose . '</li>';
-                                }
-                            } else {
-                                echo '<p id="no-history-message">No history available</p>';
-                            }
-
-                            $stmt->close();
-                            ?>
+                        $stmt->close();
+                        ?>
 
                         </ul>
                     </div>
                 </div>
             </ul>
-            <button class="testimony-button" onclick="window.location.href='../Testimony/testimony.php'">View Patient Testimonies</button>
+            <button class="testimony-button" onclick="window.location.href='../Testimony/testimony.html'">View Patient Testimonies</button>
         </section>
     </main>
-    <!-- Logout Button -->
     <div style="text-align: right; padding: 40px;">
         <form action="../Login System/logout.php" method="post">
             <button type="submit" class="logout-button">Log Out</button>
@@ -188,21 +185,6 @@ $isAdmin = $loggedIn && $_SESSION['username'] == 'admin';
     </footer>
  
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var testimonyButton = document.querySelector('.testimony-button');
-            testimonyButton.addEventListener('click', function() {
-                window.location.href = 'patient-testimonies.html';
-            });
-            var profileLink = document.getElementById('myProfileLink');
-            profileLink.addEventListener('click', function(event) {
-                <?php if (!isset($_SESSION['username']) || !isset($_SESSION['email'])): ?>
-                    event.preventDefault();
-                    alert('Login first');
-                    window.location.href = '../Login System/MyAccountSignUp.php';
-                <?php endif; ?>
-            });
-        });
- 
         function previewImage(event) {
             var input = event.target;
             var reader = new FileReader();
